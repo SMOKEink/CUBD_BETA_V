@@ -1,0 +1,43 @@
+#include "../../inc/cub3d.h"
+
+bool	is_wall(t_game *gm, int x, int y)
+{
+	char	c;
+	int		row_width;
+
+	if (x < 0 || y < 0 || y >= gm->map_h)
+		return (1);
+	row_width = (int)strlen(gm->map[y]);
+	if (x >= row_width)
+		return (1);
+	c = gm->map[y][x];
+	if (c == '1' || c == ' ' || c == 'D')
+		return (1);
+	return (0);
+}
+
+void	put_pixel(t_game *gm, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
+		return ;
+	dst = gm->frame.data_img + y * gm->frame.line_len + x * (gm->frame.bpp / 8);
+	*(unsigned int *)dst = color;
+}
+
+int close_win(t_game *g)
+{
+	destroy_game(g, NULL);
+	return (0);
+}
+
+int	main_function(t_game *gm)
+{
+	move_player(gm);
+	render_image(gm);
+	draw_minimap(gm);
+	draw_hands(gm);
+	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
+	return (0);
+}

@@ -1,0 +1,80 @@
+#include "../../inc/cub3d.h"
+
+static void	move_forward(t_game *gm, t_player *p)
+{
+	double		new_x;
+	double		new_y;
+	
+	new_x = p->x + p->dir_x * MOVE_SPEED;
+	new_y = p->y + p->dir_y * MOVE_SPEED;
+	if (!collides_at(gm, new_x, p->y))
+		p->x = new_x;
+	if (!collides_at(gm, p->x, new_y))
+		p->y = new_y;
+	p->moving = true;	
+}
+static void	move_backward(t_game *gm, t_player *p)
+{
+	double		new_x;
+	double		new_y;
+
+	new_x = p->x - p->dir_x * MOVE_SPEED;
+	new_y = p->y - p->dir_y * MOVE_SPEED;
+	if (!collides_at(gm, new_x, p->y))
+		p->x = new_x;
+	if (!collides_at(gm, p->x, new_y))
+		p->y = new_y;
+	p->moving = true;
+}
+static void	move_right(t_game *gm, t_player *p)
+{
+	double		new_x;
+	double		new_y;
+
+	new_x = p->x + p->dir_y * MOVE_SPEED;
+	new_y = p->y - p->dir_x * MOVE_SPEED;
+	if (!collides_at(gm, new_x, p->y))
+		p->x = new_x;
+	if (!collides_at(gm, p->x, new_y))
+		p->y = new_y;
+	p->moving = true;
+}
+static void	move_left(t_game *gm, t_player *p)
+{
+	double		new_x;
+	double		new_y;
+
+	new_x = p->x - p->dir_y * MOVE_SPEED;
+	new_y = p->y + p->dir_x * MOVE_SPEED;
+	if (!collides_at(gm, new_x, p->y))
+		p->x = new_x;
+	if (!collides_at(gm, p->x, new_y))
+		p->y = new_y;
+	p->moving = true;
+}
+void	move_player(t_game *gm)
+{
+	t_player	*p;
+
+	p = &gm->player;
+	p->moving = false;
+	if (gm->keys.up)
+		move_forward(gm, p);
+	if (gm->keys.down)
+		move_backward(gm, p);
+	if (gm->keys.right)
+		move_right(gm, p);
+	if (gm->keys.left)
+		move_left(gm, p);
+	if (gm->keys.rot_l || gm->keys.rot_r)
+	{
+		if (gm->keys.rot_r)
+			rotate_player(p, -ROT_SPEED);
+		else
+			rotate_player(p, ROT_SPEED);
+	}
+	if (p->moving)
+		gm->hand_phase += 0.12;
+	else
+		gm->hand_phase *= 0.92;
+}
