@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/14 21:21:16 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/15 11:59:01 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ int	main(int argc, char *argv[])
 	printf("south texture path = [%s]\n", g.tex_path[TEX_S]);
 	printf("west texture path = [%s]\n", g.tex_path[TEX_W]);
 	printf("door texture path = [%s]\n", g.door_path);
-
 	start_game(&g);
-
 	gc_free_all();
 	return (0);
 }

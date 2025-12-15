@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/03 17:12:52 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/15 12:01:42 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,6 @@
 # define SO_WALL "./assets/south_wall.xpm"
 # define WE_WALL "./assets/west_wall.xpm"
 # define HELL_YEAH "./assets/budweiser.xpm"
-
-// #define MM_RADIUS_PX      75
-// #define MM_PIX_PER_CELL    8
-// #define MM_MARGIN_X       12
-// #define MM_MARGIN_Y       12
-
-// #define HAND_HEIGHT_PX      900    // change this to resize the hand
-// #define HAND_BOB_PIX        14     // vertical bob amplitude
-// #define HAND_CROP_TOP_PCT   40     // % of source trimmed from top (0..99)
 
 
 # ifndef TEX_WALL_COUNT
@@ -257,7 +248,7 @@ void			rotate_player(t_player *p, double angle);
 int				key_press(int keycode, t_game *g);
 int				key_release(int keycode, t_game *g);
 void			move_player(t_game *gm);
-void			start_game(t_game *gm);
+int				start_game(t_game *gm);
 int	main_function(t_game *gm);
 // void			free_map(char **map);
 int				collides_at(t_game *gm, double x, double y);
