@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/15 11:59:01 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:25:03 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	check_extension(char *file_name)
 	int	i;
 
 	i = 0;
+	if (file_name[i] == '.' && file_name[i + 1] == '/')
+		i += 2;
 	if (file_name[i] == '.' && ft_strcmp(file_name, ".cub"))
 		return (0);
 	while (file_name[i] && file_name[i] != '.')

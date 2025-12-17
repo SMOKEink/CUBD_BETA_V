@@ -1,4 +1,4 @@
-AACHATA's error
+AACHATA's error, fixed
 
 Runing the game with an invalid xpm picture leaks 
 
@@ -61,6 +61,8 @@ Texture load failed
 
 =======================================================================================================
 
+yhajbi's error, fixed
+
 extention function not working properly
 
 NO ./assets/north_wall.xpm
@@ -88,6 +90,8 @@ Invalid file extension
 
 ================================================================================================================
 
+yhajbi's error, fixed
+
 NO ./assets/north_wall.xpm
 WE ./assets/west_wall.xpm
 EA ./assets/east_wall.xpm
@@ -113,6 +117,9 @@ this should work as spaces are valid map chars
 Error
 Duplicate asset lines in map file
 ==========================================================================================================
+
+yhajbi's error, fixed
+
 small map not working
 for mandatory there is no need for door in the map but it wont run. so we cant test a small map
 

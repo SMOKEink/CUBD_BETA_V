@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/15 12:01:42 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:08:20 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,5 +302,6 @@ int						check_duplicates(t_parse_data p_data);
 int						check_outofbounds_floor(char **map, int x, int y);
 int						check_color_data(t_assets *a);
 void					merge_data(t_parse_data p_data, t_game *g);
+int						is_alpha(char c);
 
 #endif

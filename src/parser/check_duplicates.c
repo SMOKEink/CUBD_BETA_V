@@ -6,7 +6,7 @@
 /*   By: yhajbi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:02:15 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/11/12 16:50:19 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 17:09:45 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	check_duplicates(t_parse_data p_data)
 	i = 0;
 	while (content[i])
 	{
+		if (!is_alpha(content[i][0]))
+		{
+			i++;
+			continue ;
+		}
 		j = 0;
 		count = 0;
 		if (has_only(content[i], '1'))
