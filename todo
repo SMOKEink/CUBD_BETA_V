@@ -142,6 +142,8 @@ Error
 Invalid map chars
 ==========================================================================================================
 
+yhajbi's error, already works. fixed elsewhere im guessing
+
 NO ./assets/north_wall.xpm
 WE ./assets/west_wall.xpm
 EA ./assets/east_wall.xpm
@@ -163,6 +165,8 @@ Duplicate asset lines in map file
 
 
 ==========================================================================================================
+
+yhajbi's error, already works. fixed elsewhere im guessing
 
 NO ./assets/north_wall.xpm
 WE ./assets/west_wall.xpm
@@ -205,6 +209,7 @@ spaces are up to u to handle however u want.
 
 ==========================================================================================================
 
+yhajbi's error, fixed
 
 NO ./assets/north_wall.xpm
 WE ./assets/west_wall.xpm
@@ -266,4 +271,7 @@ Your map has 0s touching spaces.
 If you convert spaces to 1: The map works, but you fail the "Map must be closed" check because you forced it closed.
 
 If you treat spaces as Void: The map returns Error, which is the correct behavior for that file.
+
+yhajbi's comment: i dont pad the map while parsing, i only pad the map with walls ('1') after i have successfully parsed the map file.
+i had a problem in the function that checks if a map is enclosed
 ==========================================================================================================

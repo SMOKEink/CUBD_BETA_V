@@ -1,0 +1,19 @@
+NO ./assets/north_wall.xpm
+WE ./assets/west_wall.xpm
+EA ./assets/east_wall.xpm
+SO ./assets/south_wall.xpm
+DO ./assets/door.xpm
+
+
+
+C 135,206,0
+F 128,128,128
+
+
+1111111111111111111111
+1000000000000000000011 
+11111100000000E1111111
+1            1            1    1
+1110000000D00000000001    
+1111111111111111111111
+

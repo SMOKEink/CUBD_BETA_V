@@ -6,15 +6,14 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/11/10 16:07:27 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 17:57:00 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	check_enclosed_helper(char	**map, int x, int y, int in_spc);
+int	check_enclosed_helper1(char	**map, int x, int y, int in_spc);
 int	count_height(char **map);
-int	is_inner_char(int c);
 int	count_width(char **map, int y);
 
 int	check_enclosed(t_parse_data *p_data)
@@ -30,15 +29,22 @@ int	check_enclosed(t_parse_data *p_data)
 	while (map[y])
 	{
 		x = 0;
+		printf("%s\n", map[y]);
 		while (map[y][x])
 		{
-			if (check_enclosed_helper(map, x, y, in_spc) == 0)
-				return (0);
-			else if (map[y][x] == '0')
+			if (is_inner_char(map[y][x]))
 			{
-				if (check_outofbounds_floor(map, x, y) == 0)
-					return (printf("%c at [%d, %d]\n", map[y][x], x, y), 0);
+				if (check_neighbors(map, x, y) == 0)
+					return (printf("Error\n%c at [%d, %d]\n", map[y][x], x, y), 0);
 			}
+			/* if (check_enclosed_helper1(map, x, y, in_spc) == 0 */
+			/* 	|| check_enclosed_helper2(map, x, y, in_spc) == 0) */
+			/* 	return (0); */
+			/* else if (map[y][x] == '0') */
+			/* { */
+			/* 	if (check_outofbounds_floor(map, x, y) == 0) */
+			/* 		return (printf("%c at [%d, %d]\n", map[y][x], x, y), 0); */
+			/* } */
 			x++;
 		}
 		y++;
@@ -46,7 +52,7 @@ int	check_enclosed(t_parse_data *p_data)
 	return (1);
 }
 
-int	check_enclosed_helper(char	**map, int x, int y, int in_spc)
+int	check_enclosed_helper1(char	**map, int x, int y, int in_spc)
 {
 	if (map[y][x] == ' ')
 		in_spc = 1;
