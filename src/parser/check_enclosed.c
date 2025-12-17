@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 19:19:40 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 20:47:08 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	check_enclosed(t_parse_data *p_data)
 {
 	int		x;
 	int		y;
-	int		in_spc;
 	char	**map;
 
 	y = 0;
-	in_spc = 0;
 	map = p_data->matrix;
 	while (map[y])
 	{
