@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:50:59 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 17:13:45 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 19:18:11 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	check_map_chars(t_parse_data *p_data)
 	}
 	if (doors > 0 && !p_data->has_door)
 		return (0);
-	/* else if (doors == 0 && p_data->has_door) */
-	/* 	return (0); */
 	return (1);
 }
 

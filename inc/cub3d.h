@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 18:01:46 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 19:08:36 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,5 +307,7 @@ int						check_enclosed_helper2(char	**map, int x, int y, int in_spc);
 int						is_inner_char(int c);
 int						check_neighbors(char **map, int x, int y);
 int						is_whitespace(char c);
+int						join_file_lines_helper(char *buffer, int *map_started, int *map_gap);
+int						has_space_only(char *s);
 
 #endif

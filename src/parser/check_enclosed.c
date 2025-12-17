@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 17:57:00 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 19:19:40 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,14 @@ int	check_enclosed(t_parse_data *p_data)
 	while (map[y])
 	{
 		x = 0;
-		printf("%s\n", map[y]);
 		while (map[y][x])
 		{
 			if (is_inner_char(map[y][x]))
 			{
 				if (check_neighbors(map, x, y) == 0)
-					return (printf("Error\n%c at [%d, %d]\n", map[y][x], x, y), 0);
+					return (printf("Error\n%c at [%d, %d]\n",
+							map[y][x], x, y), 0);
 			}
-			/* if (check_enclosed_helper1(map, x, y, in_spc) == 0 */
-			/* 	|| check_enclosed_helper2(map, x, y, in_spc) == 0) */
-			/* 	return (0); */
-			/* else if (map[y][x] == '0') */
-			/* { */
-			/* 	if (check_outofbounds_floor(map, x, y) == 0) */
-			/* 		return (printf("%c at [%d, %d]\n", map[y][x], x, y), 0); */
-			/* } */
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:19:52 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/11/01 19:21:16 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 19:08:24 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_map_line	*get_map(int fd);
 char		**get_file_content(int fd);
 char		*join_file_lines(int fd);
-int			has_space_only(char *s);
 int			check_assets(void);
 
 int	parse_map_file(char *file_name, t_parse_data *p_data)
@@ -61,24 +60,20 @@ char	*join_file_lines(int fd)
 {
 	char	*ret;
 	char	*buffer;
-	int		in_map;
-	char	*prvs;
+	int		map_started;
+	int		map_gap;
 
-	ret = NULL;
-	in_map = 0;
-	prvs = NULL;
+	ret = ft_strdup("");
+	map_started = 0;
+	map_gap = 0;
 	while (1)
 	{
 		buffer = get_next_line(fd);
 		if (!buffer)
 			break ;
-		if (is_map(buffer) && !has_space_only(buffer) && in_map == 0)
-			in_map = 1;
-		else if (in_map == 1 && buffer[0] == '\n' && ft_strchr(prvs, '0'))
+		if (join_file_lines_helper(buffer, &map_started, &map_gap) == 0)
 			return (NULL);
-		if (!has_space_only(buffer))
-			ret = ft_strjoin(ret, buffer);
-		prvs = buffer;
+		ret = ft_strjoin(ret, buffer);
 	}
 	return (ret);
 }
