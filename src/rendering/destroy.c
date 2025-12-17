@@ -44,6 +44,7 @@ void destroy_game(t_game *g, const char *msg)
 		mlx_destroy_display(g->mlx);
 		free(g->mlx);
 	}
-	free_map(g->map);
+	gc_free_all();
+	/* free_map(g->map); */				// commented because already allocated with gc
 	exit(0);
 }
