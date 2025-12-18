@@ -44,6 +44,7 @@ void destroy_game(t_game *g, const char *msg)
 		mlx_destroy_display(g->mlx);
 		free(g->mlx);
 	}
-	free_map(g->map);
+	gc_free_all();						// yhajbi's code to prevent leaks when closing the game
+	/* free_map(g->map); */				// yhajbi commented because already allocated with gc
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhajbi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 21:37:16 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/11/11 20:10:50 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/17 17:06:53 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,11 @@ int	ft_charcount(char *s, int c)
 		i++;
 	}
 	return (count);
+}
+
+int	is_alpha(char c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }
