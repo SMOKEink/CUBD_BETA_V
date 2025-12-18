@@ -29,6 +29,7 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 int close_win(t_game *g)
 {
 	destroy_game(g, NULL);
+	gc_free_all();
 	return (0);
 }
 
