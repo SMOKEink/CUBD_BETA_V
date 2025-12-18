@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/18 16:00:16 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:06 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_tex
 
 # define DOOR_FRONT_THRESHOLD 0.5
 
-typedef struct s_door_pick
+typedef struct s_door
 {
 	int					x;
 	int					y;
