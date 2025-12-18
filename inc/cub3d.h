@@ -130,7 +130,7 @@ typedef struct s_door
 	int					x;
 	int					y;
 	double				dist;
-}						t_door_pick;
+}						t_door;
 
 typedef struct s_ray
 {

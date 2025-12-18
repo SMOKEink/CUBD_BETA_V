@@ -12,7 +12,7 @@ static int	in_bounds(t_game *gm, int x, int y)
 	return (1);
 }
 
-static int	consider_cell(t_game *gm, t_door_pick *best, int tx, int ty)
+static int	consider_cell(t_game *gm, t_door *best, int tx, int ty)
 {
 	char	cell;
 	double	cx;
@@ -39,35 +39,37 @@ static int	consider_cell(t_game *gm, t_door_pick *best, int tx, int ty)
 		return (best->dist = dist, best->x = tx, best->y = ty, 0);
 	return (0);
 }
-static void	scan_neighbours(t_game *gm, t_door_pick *best)
+static void	scan_neighbours(t_game *gm, t_door *best)
 {
-	int	px;
-	int	py;
+	int	p_x;
+	int	p_y;
 	int	dy;
 	int	dx;
 	int	ty;
 	int	tx;
 
-	px = (int)gm->player.x;
-	py = (int)gm->player.y;
-	dy = -2;
-	while (++dy <= 1)
+	p_x = (int)gm->player.x;
+	p_y = (int)gm->player.y;
+	dy = -1;
+	while (dy <= 1)
 	{
-		ty = py + dy;
-		dx = -2;
-		while (++dx <= 1)
+		ty = p_y + dy;
+		dx = -1;
+		while (dx <= 1)
 		{
-			tx = px + dx;
+			tx = p_x + dx;
 			if (in_bounds(gm, tx, ty))
 				consider_cell(gm, best, tx, ty);
+			dx++;
 		}
+		dy++;
 	}
 }
-static void	apply_toggle(t_game *gm, t_door_pick *best)
+static void	apply_toggle(t_game *gm, t_door *best)
 {
 	char	*cell;
-	int	player_x;
-	int	player_y;
+	int		player_x;
+	int		player_y;
 
 	if (best->x == -1 || best->dist > 1.2)
 		return ;
@@ -87,7 +89,7 @@ static void	apply_toggle(t_game *gm, t_door_pick *best)
 }
 void	toggle_door(t_game *gm)
 {
-	t_door_pick	best;
+	t_door	best;
 
 	best.x = -1;
 	best.y = -1;
