@@ -1,5 +1,17 @@
 #include "../../inc/cub3d.h"
 
+int	in_bounds(t_game *gm, int x, int y)
+{
+	int	rowlen;
+
+	if (y < 0 || y >= gm->map_h)
+		return (0);
+	rowlen = (int)strlen(gm->map[y]);
+	if (x < 0 || x >= rowlen)
+		return (0);
+	return (1);
+}
+
 bool	is_wall(t_game *gm, int x, int y)
 {
 	char	c;

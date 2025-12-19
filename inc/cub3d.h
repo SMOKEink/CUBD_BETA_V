@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/18 02:51:14 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/19 20:03:43 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -29,7 +30,8 @@
 # define WIDTH 1290
 # define HEIGHT 720
 
-# define MOVE_SPEED 0.08
+# define MOVE_SPEED 0.004
+# define SPRINT_SPEED 0.1
 # define ROT_SPEED 0.05
 # define MOUSE_ROT_SPEED 0.00035
 
@@ -104,13 +106,14 @@ typedef struct s_player
 
 typedef struct s_keys
 {
-	int					up;
-	int					down;
-	int					right;
-	int					left;
-	int					rot_r;
-	int					rot_l;
-	int					use;
+	bool				up;
+	bool				down;
+	bool				right;
+	bool				left;
+	bool				rot_r;
+	bool				rot_l;
+	bool				sprint;
+	bool				use;
 }						t_keys;
 
 typedef struct s_tex
@@ -123,8 +126,6 @@ typedef struct s_tex
 	int					line_len;
 	int					endian;
 }						t_tex;
-
-#define DOOR_FRONT_THRESHOLD 0.5
 
 typedef struct s_door
 {
@@ -262,6 +263,7 @@ t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);
 void			draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray);
 char			map_cell(t_game *gm, int x, int y);
+int				in_bounds(t_game *gm, int x, int y);
 
 // PARSER
 

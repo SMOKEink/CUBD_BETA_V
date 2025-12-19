@@ -1,39 +1,43 @@
 #include "../../inc/cub3d.h"
 
-int key_press(int keycode, t_game *g)
+int key_press(int keycode, t_game *gm)
 {
 	if (keycode == XK_Escape)
-		close_win(g);
+		close_win(gm);
 	else if (keycode == XK_w)
-		g->keys.up = 1;
+		gm->keys.up = 1;
 	else if (keycode == XK_s)
-		g->keys.down = 1;
+		gm->keys.down = 1;
 	else if (keycode == XK_a)
-		g->keys.left = 1;
+		gm->keys.left = 1;
 	else if (keycode == XK_d)
-		g->keys.right = 1;
+		gm->keys.right = 1;
 	else if (keycode == XK_Left)
-		g->keys.rot_l = 1;
+		gm->keys.rot_l = 1;
 	else if (keycode == XK_Right)
-		g->keys.rot_r = 1;
+		gm->keys.rot_r = 1;
 	else if (keycode == XK_e)
-		toggle_door(g);
+		toggle_door(gm);
+	else if (keycode == XK_Shift_L)
+		gm->keys.sprint = 1;
 	return 0;
 }
 
-int key_release(int keycode, t_game *g)
+int key_release(int keycode, t_game *gm)
 {
 	if (keycode == XK_w)
-		g->keys.up = 0;
+		gm->keys.up = 0;
 	else if (keycode == XK_s)
-		g->keys.down = 0;
+		gm->keys.down = 0;
 	else if (keycode == XK_a)
-		g->keys.left = 0;
+		gm->keys.left = 0;
 	else if (keycode == XK_d)
-		g->keys.right = 0;
+		gm->keys.right = 0;
 	else if (keycode == XK_Left)
-		g->keys.rot_l = 0;
+		gm->keys.rot_l = 0;
 	else if (keycode == XK_Right)
-		g->keys.rot_r = 0;
+		gm->keys.rot_r = 0;
+	else if (keycode == XK_Shift_L)
+		gm->keys.sprint = 0;
 	return 0;
 }
