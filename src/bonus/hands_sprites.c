@@ -25,8 +25,8 @@ static void	init_crop(t_game *gm, t_hand_ctx *ctx)
 static void	init_target_size(t_game *gm, t_hand_ctx *ctx)
 {
     ctx->target_h = HAND_HEIGHT_PX;
-    if (ctx->target_h > HEIGHT - 20)
-        ctx->target_h = HEIGHT - 20;
+    if (ctx->target_h > HEIGHT)
+        ctx->target_h = HEIGHT;
     if (ctx->target_h < 40)
         ctx->target_h = 40;
     ctx->target_w = (int)((double)gm->hand.w * (double)ctx->target_h

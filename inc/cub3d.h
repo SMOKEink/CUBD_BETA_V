@@ -18,6 +18,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -29,7 +30,8 @@
 # define WIDTH 1290
 # define HEIGHT 720
 
-# define MOVE_SPEED 0.08
+# define MOVE_SPEED 0.004
+# define SPRINT_SPEED 0.1
 # define ROT_SPEED 0.05
 # define MOUSE_ROT_SPEED 0.00035
 
@@ -103,13 +105,14 @@ typedef struct s_player
 
 typedef struct s_keys
 {
-	int					up;
-	int					down;
-	int					right;
-	int					left;
-	int					rot_r;
-	int					rot_l;
-	int					use;
+	bool				up;
+	bool				down;
+	bool				right;
+	bool				left;
+	bool				rot_r;
+	bool				rot_l;
+	bool				sprint;
+	bool				use;
 }						t_keys;
 
 typedef struct s_tex
@@ -254,13 +257,13 @@ int						load_textures(t_game *gm);
 void					draw_minimap(struct s_game *gm);
 unsigned int			texel_at(t_tex *t, int x, int y);
 // int				set_player_spawn(t_game *gm);
-void					destroy_game(t_game *g, const char *msg);
-void					draw_hands(t_game *gm);
-t_tex					*choose_texture(t_game *gm, t_ray *ray);
-int						hit_position(t_game *gm, t_tex *tex, t_ray *ray);
-void					draw_slice(t_game *gm, t_slice *slice, t_tex *tex,
-							t_ray *ray);
-char					map_cell(t_game *gm, int x, int y);
+void			destroy_game(t_game *g, const char *msg);
+void			draw_hands(t_game *gm);
+t_tex			*choose_texture(t_game *gm, t_ray *ray);
+int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);
+void			draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray);
+char			map_cell(t_game *gm, int x, int y);
+int				in_bounds(t_game *gm, int x, int y);
 
 // PARSER
 

@@ -1,17 +1,5 @@
 #include "../../inc/cub3d.h"
 
-static int	in_bounds(t_game *gm, int x, int y)
-{
-	int	rowlen;
-
-	if (y < 0 || y >= gm->map_h)
-		return (0);
-	rowlen = (int)strlen(gm->map[y]);
-	if (x < 0 || x >= rowlen)
-		return (0);
-	return (1);
-}
-
 static int	consider_cell(t_game *gm, t_door *best, int tx, int ty)
 {
 	char	cell;
@@ -30,10 +18,10 @@ static int	consider_cell(t_game *gm, t_door *best, int tx, int ty)
 	vx = cx - gm->player.x;
 	vy = cy - gm->player.y;
 	dist = sqrt(vx * vx + vy * vy);
-	if (dist < 1e-6)
+	if (dist < 0.7)
 		return (0);
 	dot = (vx / dist) * gm->player.dir_x + (vy / dist) * gm->player.dir_y;
-	if (dot < DOOR_FRONT_THRESHOLD)
+	if (dot < 0.7)
 		return (0);
 	if (dist < best->dist)
 		return (best->dist = dist, best->x = tx, best->y = ty, 0);
@@ -43,47 +31,37 @@ static void	scan_neighbours(t_game *gm, t_door *best)
 {
 	int	p_x;
 	int	p_y;
-	int	dy;
-	int	dx;
-	int	ty;
+	int	ix;
+	int	iy;
 	int	tx;
+	int	ty;
 
 	p_x = (int)gm->player.x;
 	p_y = (int)gm->player.y;
-	dy = -1;
-	while (dy <= 1)
+	iy = -1;
+	while (iy <= 1)
 	{
-		ty = p_y + dy;
-		dx = -1;
-		while (dx <= 1)
+		ty = p_y + iy;
+		ix = -1;
+		while (ix <= 1)
 		{
-			tx = p_x + dx;
+			tx = p_x + ix;
 			if (in_bounds(gm, tx, ty))
 				consider_cell(gm, best, tx, ty);
-			dx++;
+			ix++;
 		}
-		dy++;
+		iy++;
 	}
 }
 static void	apply_toggle(t_game *gm, t_door *best)
 {
 	char	*cell;
-	int		player_x;
-	int		player_y;
 
-	if (best->x == -1 || best->dist > 1.2)
+	if (best->x == -1 || best->dist > 1.1)
 		return ;
 	cell = &gm->map[best->y][best->x];
-	player_x = (int)gm->player.x;
-	player_y = (int)gm->player.y;
 	if (*cell == 'd')
-	{
-		if (player_x == best->x && player_y == best->y)
-			return ;
-		if (best->dist < 0.35)
-			return ;
 		*cell = 'D';
-	}
 	else if (*cell == 'D')
 		*cell = 'd';
 }
@@ -93,7 +71,7 @@ void	toggle_door(t_game *gm)
 
 	best.x = -1;
 	best.y = -1;
-	best.dist = 10.0;
+	best.dist = 2.0;
 	scan_neighbours(gm, &best);
 	apply_toggle(gm, &best);
 }
