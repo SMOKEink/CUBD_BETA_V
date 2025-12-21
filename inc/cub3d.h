@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/19 20:03:43 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/21 06:08:08 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 # include <string.h>
 # include <sys/time.h>
 
-# define WIDTH 1290
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1000
 
-# define MOVE_SPEED 0.004
-# define SPRINT_SPEED 0.1
+# define MOVE_SPEED 0.04
+# define SPRINT_SPEED 0.2
 # define ROT_SPEED 0.05
 # define MOUSE_ROT_SPEED 0.00035
 
@@ -177,10 +177,10 @@ typedef struct s_slice
 #define MMAP_PIX_PER_CELL	7
 
 //Hands
-#define HAND_HEIGHT_PX		900
-#define HAND_BOB_PIX		14
-#define HAND_CROP_TOP_PCT	30
-#define HAND_OFFSET_Y		30
+#define HAND_SCALE			1.2
+// #define HAND_BOBBING_PIX	14
+// #define HAND_OFFSET_Y		20
+// #define HAND_CROP_TOP_PCT	30
 
 typedef struct s_game
 {

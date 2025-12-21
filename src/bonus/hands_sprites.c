@@ -1,111 +1,75 @@
 #include "../../inc/cub3d.h"
 
-typedef struct s_hand_ctx
+typedef struct s_hand
 {
-    int	crop_top;
-    int	crop_h;
-    int	target_w;
-    int	target_h;
-    int	base_x;
-    int	base_y;
-}t_hand_ctx;
+	int	target_w;
+	int	target_h;
+	int	origin_x;
+	int	origin_y;
+}	t_hand;
 
-static void	init_crop(t_game *gm, t_hand_ctx *ctx)
+static unsigned int	extract_hand_color(t_game *gm, t_hand *hand, int ix, int iy)
 {
-    ctx->crop_top = (gm->hand.h * HAND_CROP_TOP_PCT) / 100;
-    if (ctx->crop_top < 0)
-        ctx->crop_top = 0;
-    if (ctx->crop_top >= gm->hand.h)
-        ctx->crop_top = gm->hand.h - 1;
-    ctx->crop_h = gm->hand.h - ctx->crop_top;
-    if (ctx->crop_h <= 0)
-        ctx->crop_h = 1;
+	int				tx;
+	int				ty;
+	unsigned int	col;
+
+	tx = ix * gm->hand.w / hand->target_w;
+	ty = iy * gm->hand.h / hand->target_h;
+	col = texel_at(&gm->hand, tx, ty);
+	if (!(col & 0x00FFFFFF))
+		return (0);
+	return (col);
 }
 
-static void	init_target_size(t_game *gm, t_hand_ctx *ctx)
+static void	draw_scaled_hand(t_game *gm, t_hand *hand)
 {
-    ctx->target_h = HAND_HEIGHT_PX;
-    if (ctx->target_h > HEIGHT)
-        ctx->target_h = HEIGHT;
-    if (ctx->target_h < 40)
-        ctx->target_h = 40;
-    ctx->target_w = (int)((double)gm->hand.w * (double)ctx->target_h
-            / (double)ctx->crop_h);
-    if (ctx->target_w <= 0)
-        ctx->target_w = 1;
-}
+	int				px;
+	int				py;
+	int				ix;
+	int				iy;
+	unsigned int	col;
 
-static void	init_hand_base(t_game *gm, t_hand_ctx *ctx)
-{
-    int	bob;
-
-    bob = (int)(sin(gm->hand_phase) * HAND_BOB_PIX);
-    ctx->base_x = (WIDTH - ctx->target_w) / 2;
-    ctx->base_y = HEIGHT - ctx->target_h - 8 + HAND_OFFSET_Y + bob;
-}
-
-static unsigned int	sample_hand_color(t_game *gm, t_hand_ctx *ctx, int tx, int ty)
-{
-    int			sx;
-    int			sy;
-    unsigned int	col;
-    int			sum;
-
-    sy = ctx->crop_top + (ty * ctx->crop_h / ctx->target_h);
-    sx = tx * gm->hand.w / ctx->target_w;
-    col = texel_at(&gm->hand, sx, sy);
-    sum = ((col >> 16) & 0xFF) + ((col >> 8) & 0xFF) + (col & 0xFF);
-    if (sum < 45)
-        return (0);
-    return (col);
-}
-
-static void	draw_hand_row(t_game *gm, t_hand_ctx *ctx, int ty)
-{
-    int			px;
-    int			tx;
-    unsigned int	col;
-    int			py;
-
-    py = ctx->base_y + ty;
-    if (py < 0 || py >= HEIGHT)
-        return ;
-    tx = 0;
-    while (tx < ctx->target_w)
-    {
-        px = ctx->base_x + tx;
-        if (px >= 0 && px < WIDTH)
-        {
-            col = sample_hand_color(gm, ctx, tx, ty);
-            if (col)
-                put_pixel(gm, px, py, col);
-        }
-        tx++;
-    }
-}
-
-static void	draw_scaled_hand(t_game *gm, t_hand_ctx *ctx)
-{
-    int	ty;
-
-    ty = 0;
-    while (ty < ctx->target_h)
-    {
-        draw_hand_row(gm, ctx, ty);
-        ty++;
-    }
+	iy = -1;
+	while (++iy < hand->target_h)
+	{
+		py = hand->origin_y + iy;
+		if (py < 0 || py >= HEIGHT)
+			continue ;
+		ix = -1;
+		while (++ix < hand->target_w)
+		{
+			px = hand->origin_x + ix;
+			if (px >= 0 && px < WIDTH)
+			{
+				col = extract_hand_color(gm, hand, ix, iy);
+				if (col)
+					put_pixel(gm, px, py, col);
+			}
+		}
+	}
 }
 
 void	draw_hands(t_game *gm)
 {
-    t_hand_ctx	ctx;
+	t_hand	hand;
+	int		bob;
 
-    if (!gm->hand.img || !gm->hand.data)
-        return ;
-    init_crop(gm, &ctx);
-    init_target_size(gm, &ctx);
-    init_hand_base(gm, &ctx);
-    if (ctx.target_w <= 0 || ctx.target_h <= 0)
-        return ;
-    draw_scaled_hand(gm, &ctx);
+	if (!gm->hand.img || !gm->hand.data)
+		return ;
+	if (gm->hand.h <= 0)
+		gm->hand.h = 1;
+	hand.target_h = (int)(HEIGHT * HAND_SCALE);
+	hand.target_w = (int)((double)gm->hand.w * (double)hand.target_h
+			/ (double)gm->hand.h);
+	if (hand.target_w <= 0)
+		hand.target_w = 1;
+	if (!gm->keys.sprint)
+		bob = (int)(sin(gm->hand_phase) * 20);
+	else
+		bob = (int)(sin(gm->hand_phase) * 40);
+	hand.origin_x = (WIDTH - hand.target_w) / 2;
+	hand.origin_y = HEIGHT - hand.target_h + (HEIGHT / 20) + bob;
+	draw_scaled_hand(gm, &hand);
 }
+	// printf("-----------------------\nhand phase = %lf	bob = %d\n",gm->hand_phase, bob);
