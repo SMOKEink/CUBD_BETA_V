@@ -11,7 +11,9 @@ MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 
-all : $(NAME)
+all: $(NAME)
+
+bonus: all
 
 $(NAME): $(OBJ) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $@

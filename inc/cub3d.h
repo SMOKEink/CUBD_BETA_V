@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/21 06:08:08 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/18 16:23:06 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 # include <string.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 # define WIDTH 1920
 # define HEIGHT 1000
@@ -40,7 +40,6 @@
 # define SO_WALL "./assets/south_wall.xpm"
 # define WE_WALL "./assets/west_wall.xpm"
 # define HELL_YEAH "./assets/budweiser.xpm"
-
 
 # ifndef TEX_WALL_COUNT
 #  define TEX_WALL_COUNT 4
@@ -127,54 +126,56 @@ typedef struct s_tex
 	int					endian;
 }						t_tex;
 
+# define DOOR_FRONT_THRESHOLD 0.5
+
 typedef struct s_door
 {
-	int		x;
-	int		y;
-	double	dist;
-}	t_door;
+	int					x;
+	int					y;
+	double				dist;
+}						t_door;
 
 typedef struct s_ray
 {
-	double  cam_x;
-	double  dir_x;
-	double  dir_y;
-	int     map_x;
-	int     map_y;
-	double  delta_x;
-	double  delta_y;
-	double  side_x;
-	double  side_y;
-	int     step_x;
-	int     step_y;
-	bool    hit_vertical;
-	double  perp_dist;
-}   t_ray;
+	double				cam_x;
+	double				dir_x;
+	double				dir_y;
+	int					map_x;
+	int					map_y;
+	double				delta_x;
+	double				delta_y;
+	double				side_x;
+	double				side_y;
+	int					step_x;
+	int					step_y;
+	bool				hit_vertical;
+	double				perp_dist;
+}						t_ray;
 
 typedef struct s_slice
 {
-	int     line_len;
-	int     line_start;
-	int     line_end;
-	double  tex_step;
-	double  tex_pos;
-	int     tex_x;
-	int     tex_y;
-	int		column;
-}   t_slice;
+	int					line_len;
+	int					line_start;
+	int					line_end;
+	double				tex_step;
+	double				tex_pos;
+	int					tex_x;
+	int					tex_y;
+	int					column;
+}						t_slice;
 
-# define COL_ROAD 			1579036
-# define COL_RING 			16777215
-# define COL_WALL 			0
-# define COL_DOOR 			6618980
-# define COL_OPENED_DOOR	2652200
-# define COL_PLAYER			16727100
-# define COL_DIRECTION		16737380
+# define COL_ROAD 1579036
+# define COL_RING 16777215
+# define COL_WALL 0
+# define COL_DOOR 6618980
+# define COL_OPENED_DOOR 2652200
+# define COL_PLAYER 16727100
+# define COL_DIRECTION 16737380
 
-#define MMAP_X				80
-#define MMAP_Y				80
-#define MMAP_R				70
-#define MMAP_PIX_PER_CELL	7
+# define MMAP_X 80
+# define MMAP_Y 80
+# define MMAP_R 70
+# define MMAP_PIX_PER_CELL 7
 
 //Hands
 #define HAND_SCALE			1.2
@@ -184,25 +185,25 @@ typedef struct s_slice
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	t_img		frame;
-	t_player	player;
-	t_keys		keys;
-	int			map_w;
-	int			map_h;
-	char		**map;
-	char		*filename;
-	int			ceiling;
-	int			floor;
-	char		*tex_path[TEX_WALL_COUNT];
-	t_tex   	wall[TEX_WALL_COUNT];
-	char		*door_path;
-	t_tex		door;
-	char		*hand_path;
-	t_tex		hand;
-	double		hand_phase;
-}	t_game;
+	void				*mlx;
+	void				*win;
+	t_img				frame;
+	t_player			player;
+	t_keys				keys;
+	int					map_w;
+	int					map_h;
+	char				**map;
+	char				*filename;
+	int					ceiling;
+	int					floor;
+	char				*tex_path[TEX_WALL_COUNT];
+	t_tex				wall[TEX_WALL_COUNT];
+	char				*door_path;
+	t_tex				door;
+	char				*hand_path;
+	t_tex				hand;
+	double				hand_phase;
+}						t_game;
 
 typedef struct s_parse_data
 {
@@ -233,29 +234,28 @@ typedef struct s_garbage
 	struct s_garbage	*next;
 }						t_garbage;
 
-
 //	RENDERER
-void			toggle_door(t_game *gm);
-int				load_tex_any(t_game *gm, t_tex *tex, const char *path);
-void			free_textures(t_game *gm);
+void					toggle_door(t_game *gm);
+int						load_tex_any(t_game *gm, t_tex *tex, const char *path);
+void					free_textures(t_game *gm);
 
 // int				parse_config(t_game *gm, const char *filename);
-void			render_image(t_game *gm);
-bool			is_wall(t_game *gm, int x, int y);
-void			put_pixel(t_game *gm, int x, int y, int color);
-int				close_win(t_game *g);
-int				mouse_move(int x, int y, t_game *g);
-void			rotate_player(t_player *p, double angle);
-int				key_press(int keycode, t_game *g);
-int				key_release(int keycode, t_game *g);
-void			move_player(t_game *gm);
-int				start_game(t_game *gm);
-int	main_function(t_game *gm);
+void					render_image(t_game *gm);
+bool					is_wall(t_game *gm, int x, int y);
+void					put_pixel(t_game *gm, int x, int y, int color);
+int						close_win(t_game *g);
+int						mouse_move(int x, int y, t_game *g);
+void					rotate_player(t_player *p, double angle);
+int						key_press(int keycode, t_game *g);
+int						key_release(int keycode, t_game *g);
+void					move_player(t_game *gm);
+int						start_game(t_game *gm);
+int						main_function(t_game *gm);
 // void			free_map(char **map);
-int				collides_at(t_game *gm, double x, double y);
-int				load_textures(t_game *gm);
-void			draw_minimap(struct s_game *gm);
-unsigned int	texel_at(t_tex *t, int x, int y);
+int						collides_at(t_game *gm, double x, double y);
+int						load_textures(t_game *gm);
+void					draw_minimap(struct s_game *gm);
+unsigned int			texel_at(t_tex *t, int x, int y);
 // int				set_player_spawn(t_game *gm);
 void			destroy_game(t_game *g, const char *msg);
 void			draw_hands(t_game *gm);
@@ -305,11 +305,13 @@ int						check_outofbounds_floor(char **map, int x, int y);
 int						check_color_data(t_assets *a);
 void					merge_data(t_parse_data p_data, t_game *g);
 int						is_alpha(char c);
-int						check_enclosed_helper2(char	**map, int x, int y, int in_spc);
+int						check_enclosed_helper2(char **map, int x, int y,
+							int in_spc);
 int						is_inner_char(int c);
 int						check_neighbors(char **map, int x, int y);
 int						is_whitespace(char c);
-int						join_file_lines_helper(char *buffer, int *map_started, int *map_gap);
+int						join_file_lines_helper(char *buffer, int *map_started,
+							int *map_gap);
 int						has_space_only(char *s);
 
 #endif
