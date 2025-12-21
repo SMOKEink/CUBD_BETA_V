@@ -108,5 +108,9 @@ void	move_player(t_game *gm)
 	if (p->moving)
 		gm->hand_phase += 0.12;
 	else
-		gm->hand_phase *= 0.92;
+	{	
+		if (gm->hand_phase >= 40)
+			gm->hand_phase = 40;	
+		gm->hand_phase *= 0.95;
+	}
 }
