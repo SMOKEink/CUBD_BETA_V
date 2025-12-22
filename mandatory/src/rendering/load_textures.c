@@ -49,10 +49,6 @@ int load_textures(t_game *gm)
 			return 1;
 		i++;
 	}
-	if (gm->door_path && load_tex_any(gm, &gm->door, gm->door_path))
-        return 1;
-	if (gm->hand_path && load_tex_any(gm, &gm->hand, gm->hand_path))
-        return 1;
 	return 0;
 }
 
@@ -66,21 +62,5 @@ void free_textures(t_game *gm)
 		gm->wall[i].img = NULL;
 		gm->wall[i].data = NULL;
 		i++;
-	}
-	if (gm->door_path)
-	{
-		if (gm->door.img && gm->mlx)
-			mlx_destroy_image(gm->mlx, gm->door.img);
-	    gm->door.img = NULL;
-	    gm->door.data = NULL;
-		gm->door_path = NULL;
-	}
-	if (gm->hand_path)
-	{
-		if (gm->hand.img && gm->mlx)
-			mlx_destroy_image(gm->mlx, gm->hand.img);
-		gm->hand.img = NULL;
-		gm->hand.data = NULL;
-		gm->hand_path = NULL;
 	}
 }

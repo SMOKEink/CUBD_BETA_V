@@ -18,8 +18,7 @@ static void	move_forward(t_game *gm, t_player *p)
 	if (!collides_at(gm, new_x, p->y))
 		p->x = new_x;
 	if (!collides_at(gm, p->x, new_y))
-		p->y = new_y;
-	p->moving = true;	
+		p->y = new_y;	
 }
 static void	move_backward(t_game *gm, t_player *p)
 {
@@ -40,7 +39,6 @@ static void	move_backward(t_game *gm, t_player *p)
 		p->x = new_x;
 	if (!collides_at(gm, p->x, new_y))
 		p->y = new_y;
-	p->moving = true;
 }
 static void	move_right(t_game *gm, t_player *p)
 {
@@ -61,7 +59,6 @@ static void	move_right(t_game *gm, t_player *p)
 		p->x = new_x;
 	if (!collides_at(gm, p->x, new_y))
 		p->y = new_y;
-	p->moving = true;
 }
 static void	move_left(t_game *gm, t_player *p)
 {
@@ -82,14 +79,12 @@ static void	move_left(t_game *gm, t_player *p)
 		p->x = new_x;
 	if (!collides_at(gm, p->x, new_y))
 		p->y = new_y;
-	p->moving = true;
 }
 void	move_player(t_game *gm)
 {
 	t_player	*p;
 
 	p = &gm->player;
-	p->moving = false;
 	if (gm->keys.up)
 		move_forward(gm, p);
 	if (gm->keys.down)
@@ -104,13 +99,5 @@ void	move_player(t_game *gm)
 			rotate_player(p, -ROT_SPEED);
 		else
 			rotate_player(p, ROT_SPEED);
-	}
-	if (p->moving)
-		gm->hand_phase += 0.12;
-	else
-	{	
-		if (gm->hand_phase >= 40)
-			gm->hand_phase = 40;	
-		gm->hand_phase *= 0.95;
 	}
 }

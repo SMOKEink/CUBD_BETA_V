@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 03:14:47 by yhajbi           ###   ########.fr       */
+/*   Created: 2025/12/22 10:44:05 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 10:47:41 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-// # include "../.mlx/mlx.h"
 # include "../../.mlx/mlx.h"
 # include "get_next_line.h"
 # include <X11/X.h>
@@ -101,7 +101,6 @@ typedef struct s_player
 	double				dir_y;
 	double				plane_x;
 	double				plane_y;
-	bool				moving;
 }						t_player;
 
 typedef struct s_keys
@@ -126,15 +125,6 @@ typedef struct s_tex
 	int					line_len;
 	int					endian;
 }						t_tex;
-
-# define DOOR_FRONT_THRESHOLD 0.5
-
-typedef struct s_door
-{
-	int					x;
-	int					y;
-	double				dist;
-}						t_door;
 
 typedef struct s_ray
 {
@@ -165,25 +155,6 @@ typedef struct s_slice
 	int					column;
 }						t_slice;
 
-# define COL_ROAD 1579036
-# define COL_RING 16777215
-# define COL_WALL 0
-# define COL_DOOR 6618980
-# define COL_OPENED_DOOR 2652200
-# define COL_PLAYER 16727100
-# define COL_DIRECTION 16737380
-
-# define MMAP_X 80
-# define MMAP_Y 80
-# define MMAP_R 70
-# define MMAP_PIX_PER_CELL 7
-
-//Hands
-#define HAND_SCALE			1.2
-// #define HAND_BOBBING_PIX	14
-// #define HAND_OFFSET_Y		20
-// #define HAND_CROP_TOP_PCT	30
-
 typedef struct s_game
 {
 	void				*mlx;
@@ -199,11 +170,6 @@ typedef struct s_game
 	int					floor;
 	char				*tex_path[TEX_WALL_COUNT];
 	t_tex				wall[TEX_WALL_COUNT];
-	char				*door_path;
-	t_tex				door;
-	char				*hand_path;
-	t_tex				hand;
-	double				hand_phase;
 }						t_game;
 
 typedef struct s_parse_data
@@ -255,16 +221,14 @@ int						main_function(t_game *gm);
 // void			free_map(char **map);
 int						collides_at(t_game *gm, double x, double y);
 int						load_textures(t_game *gm);
-void					draw_minimap(struct s_game *gm);
 unsigned int			texel_at(t_tex *t, int x, int y);
 // int				set_player_spawn(t_game *gm);
 void			destroy_game(t_game *g, const char *msg);
-void			draw_hands(t_game *gm);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);
 void			draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray);
-char			map_cell(t_game *gm, int x, int y);
-int				in_bounds(t_game *gm, int x, int y);
+// char			map_cell(t_game *gm, int x, int y);
+// int				in_bounds(t_game *gm, int x, int y);
 
 // PARSER
 
