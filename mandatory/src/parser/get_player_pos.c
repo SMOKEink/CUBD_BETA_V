@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:50:59 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 03:29:42 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 20:52:43 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_map_chars(t_parse_data *p_data)
 		while (map[y][++x])
 		{
 			if (is_valid_char(map[y][x]) == 0)
-				return (printf("culprit = %c\n", map[y][x]), 0);
+				return (0);
 		}
 	}
 	return (1);
