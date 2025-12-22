@@ -1,12 +1,16 @@
-#include "../../inc/cub3d_bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hands_sprites.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:45:39 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:46:05 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct s_hand
-{
-	int	target_w;
-	int	target_h;
-	int	origin_x;
-	int	origin_y;
-}	t_hand;
+#include "../../inc/cub3d_bonus.h"
 
 static unsigned int	extract_hand_color(t_game *gm, t_hand *hand, int ix, int iy)
 {
@@ -72,4 +76,3 @@ void	draw_hands(t_game *gm)
 	hand.origin_y = HEIGHT - hand.target_h + (HEIGHT / 20) + bob;
 	draw_scaled_hand(gm, &hand);
 }
-	// printf("-----------------------\nhand phase = %lf	bob = %d\n",gm->hand_phase, bob);

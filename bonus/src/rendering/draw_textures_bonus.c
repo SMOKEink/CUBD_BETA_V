@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_textures_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:57:48 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:59:51 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d_bonus.h"
 
-unsigned int    texel_at(t_tex *t, int x, int y)
+unsigned int	texel_at(t_tex *t, int x, int y)
 {
-	char    *px;
+	char	*px;
 
 	if (x < 0)
 		x = 0;
@@ -30,7 +42,7 @@ char	map_cell(t_game *gm, int x, int y)
 
 t_tex	*choose_texture(t_game *gm, t_ray *ray)
 {
-	char    cell;
+	char	cell;
 
 	cell = map_cell(gm, ray->map_x, ray->map_y);
 	if (cell == 'D')
@@ -49,7 +61,7 @@ t_tex	*choose_texture(t_game *gm, t_ray *ray)
 		return (&gm->wall[TEX_S]);
 }
 
-int hit_position(t_game *gm, t_tex *tex, t_ray *ray)
+int	hit_position(t_game *gm, t_tex *tex, t_ray *ray)
 {
 	int		tex_x;
 	double	hit_point;
@@ -60,17 +72,17 @@ int hit_position(t_game *gm, t_tex *tex, t_ray *ray)
 		hit_point = gm->player.x + ray->perp_dist * ray->dir_x;
 	hit_point -= floor(hit_point);
 	tex_x = (int)(hit_point * (double)tex->w);
-	if (ray->hit_vertical && ray->dir_x > 0) //correct mirror textures
+	if (ray->hit_vertical && ray->dir_x > 0)
 		tex_x = tex->w - tex_x;
 	if (!ray->hit_vertical && ray->dir_y < 0)
 		tex_x = tex->w - tex_x;
 	return (tex_x);
 }
 
-void draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray)
+void	draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray)
 {
-	int             y;
-	unsigned int    color;
+	int				y;
+	unsigned int	color;
 	double			real_start;
 
 	slice->line_len = (int)(HEIGHT / ray->perp_dist);

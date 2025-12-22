@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:27:35 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:28:48 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
-void    ceil_and_floor(t_game *gm)
+void	ceil_and_floor(t_game *gm)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y <= HEIGHT / 2)
@@ -29,7 +41,7 @@ void    ceil_and_floor(t_game *gm)
 	}
 }
 
-static void init_ray(t_game *gm, int x, t_ray *ray)
+static void	init_ray(t_game *gm, int x, t_ray *ray)
 {
 	ray->cam_x = 2 * x / (double)WIDTH - 1;
 	ray->dir_x = gm->player.dir_x + gm->player.plane_x * ray->cam_x;
@@ -46,7 +58,7 @@ static void init_ray(t_game *gm, int x, t_ray *ray)
 		ray->delta_y = INFINITY;
 }
 
-static void init_first_steps(t_game *gm, t_ray *ray)
+static void	init_first_steps(t_game *gm, t_ray *ray)
 {
 	if (ray->dir_x < 0)
 	{
@@ -70,9 +82,9 @@ static void init_first_steps(t_game *gm, t_ray *ray)
 	}
 }
 
-static void dda_loop(t_game *gm, t_ray *ray)
+static void	dda_loop(t_game *gm, t_ray *ray)
 {
-	bool    hit;
+	bool	hit;
 
 	hit = false;
 	while (!hit)
@@ -98,12 +110,12 @@ static void dda_loop(t_game *gm, t_ray *ray)
 		ray->perp_dist = ray->side_y - ray->delta_y;
 }
 
-void    render_image(t_game *gm)
+void	render_image(t_game *gm)
 {
-	int     x;
-	t_ray   ray;
-	t_tex   *tex;
-	t_slice slice;
+	int		x;
+	t_ray	ray;
+	t_tex	*tex;
+	t_slice	slice;
 
 	ceil_and_floor(gm);
 	x = 0;
@@ -122,4 +134,3 @@ void    render_image(t_game *gm)
 		x++;
 	}
 }
-

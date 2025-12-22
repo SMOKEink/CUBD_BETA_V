@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   movements2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:24:24 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:25:43 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 int	collides_at(t_game *gm, double x, double y)
@@ -9,7 +21,7 @@ int	collides_at(t_game *gm, double x, double y)
 	int		y_max;
 	int		ix;
 	int		iy;
-	
+
 	r = 0.2;
 	x_min = floor(x - r);
 	y_min = floor(y - r);
@@ -26,10 +38,10 @@ int	collides_at(t_game *gm, double x, double y)
 	return (0);
 }
 
-void rotate_player(t_player *p, double angle)
+void	rotate_player(t_player *p, double angle)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = p->dir_x;
 	p->dir_x = p->dir_x * cos(angle) - p->dir_y * sin(angle);

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:18:46 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:20:24 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
-unsigned int    texel_at(t_tex *t, int x, int y)
+unsigned int	texel_at(t_tex *t, int x, int y)
 {
-	char    *px;
+	char	*px;
 
 	if (x < 0)
 		x = 0;
@@ -42,7 +54,7 @@ t_tex	*choose_texture(t_game *gm, t_ray *ray)
 		return (&gm->wall[TEX_S]);
 }
 
-int hit_position(t_game *gm, t_tex *tex, t_ray *ray)
+int	hit_position(t_game *gm, t_tex *tex, t_ray *ray)
 {
 	int		tex_x;
 	double	hit_point;
@@ -60,10 +72,10 @@ int hit_position(t_game *gm, t_tex *tex, t_ray *ray)
 	return (tex_x);
 }
 
-void draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray)
+void	draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray)
 {
-	int             y;
-	unsigned int    color;
+	int				y;
+	unsigned int	color;
 	double			real_start;
 
 	slice->line_len = (int)(HEIGHT / ray->perp_dist);

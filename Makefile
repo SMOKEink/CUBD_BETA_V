@@ -39,9 +39,9 @@ mandatory/uti/strutils0.c \
 mandatory/uti/strutils1.c \
 mandatory/uti/strutils2.c
 
-SRC_BONUS = bonus/src/bonus/minimap_bonus.c \
-bonus/src/bonus/door_bonus.c \
-bonus/src/bonus/hands_sprites_bonus.c \
+SRC_BONUS = bonus/src/bonus/minimap.c \
+bonus/src/bonus/door.c \
+bonus/src/bonus/hands_sprites.c \
 bonus/src/get_next_line/get_next_line_bonus.c \
 bonus/src/get_next_line/get_next_line_utils_bonus.c \
 bonus/src/parser/join_file_lines_helper_bonus.c \

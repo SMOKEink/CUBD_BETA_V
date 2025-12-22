@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:46:16 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:53:23 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d_bonus.h"
 
 static void	draw_player_marker(t_game *gm)
 {
-	int y;
-	int x;
-	int px;
-	int py;
+	int	y;
+	int	x;
+	int	px;
+	int	py;
 
 	y = -2;
 	while (y <= 2)
@@ -23,20 +35,18 @@ static void	draw_player_marker(t_game *gm)
 	}
 }
 
-static void	draw_player_direction(t_game *gm)
+static void	draw_player_direction(t_game *gm, double p_dir_len)
 {
 	double	step;
-	double	dir_len;
 	double	dir_x;
 	double	dir_y;
 	int		px;
 	int		py;
 
-	dir_len = 0.3 * MMAP_R;
 	dir_x = gm->player.dir_x;
 	dir_y = gm->player.dir_y;
 	step = 0;
-	while (step <= dir_len)
+	while (step <= p_dir_len)
 	{
 		px = (int)(MMAP_X - dir_x * step);
 		py = (int)(MMAP_Y + dir_y * step);
@@ -45,24 +55,15 @@ static void	draw_player_direction(t_game *gm)
 		step++;
 	}
 }
-// static int	pixel_in_bounds(int px, int py)
-// {
-// 	if (px < 0 || px >= WIDTH)
-// 		return (1);
-// 	if (py < 0 || py >= HEIGHT)
-// 		return (1);
-// 	return (0);
-// }
-static void	draw_disk_pixel(t_game *gm, int px, int py)
+
+static void	draw_disk_pixel(t_game *gm, int px, int py, double cell_per_px)
 {
 	int		x_off;
 	int		y_off;
 	double	wx;
 	double	wy;
-	double	cell_per_px;
 	char	cell;
 
-	cell_per_px = 1.0 / MMAP_PIX_PER_CELL;
 	x_off = px - MMAP_X;
 	y_off = py - MMAP_Y;
 	wx = gm->player.x - x_off * cell_per_px;
@@ -75,7 +76,8 @@ static void	draw_disk_pixel(t_game *gm, int px, int py)
 	else if (cell == 'd')
 		put_pixel(gm, px, py, COL_OPENED_DOOR);
 }
-static void	draw_minimap_disk(t_game *gm)
+
+static void	draw_minimap_disk(t_game *gm, double cell_per_px)
 {
 	int		x;
 	int		y;
@@ -89,23 +91,29 @@ static void	draw_minimap_disk(t_game *gm)
 	{
 		py = MMAP_Y + y;
 		if (py < 0 || py >= HEIGHT)
-			continue;
+			continue ;
 		x = -MMAP_R - 1;
 		while (++x <= MMAP_R)
 		{
 			if (x * x + y * y > r_sq)
-				continue;
+				continue ;
 			px = MMAP_X + x;
 			if (px < 0 || px >= WIDTH)
-				continue;
+				continue ;
 			put_pixel(gm, px, py, COL_ROAD);
-			draw_disk_pixel(gm, px, py);
+			draw_disk_pixel(gm, px, py, cell_per_px);
 		}
 	}
 }
+
 void	draw_minimap(t_game *gm)
 {
-	draw_minimap_disk(gm);
+	double	cell_per_px;
+	double	p_dir_len;
+
+	p_dir_len = 0.3 * MMAP_R;
+	cell_per_px = 1.0 / MMAP_PIX_PER_CELL;
+	draw_minimap_disk(gm, cell_per_px);
 	draw_player_marker(gm);
-	draw_player_direction(gm);
+	draw_player_direction(gm, p_dir_len);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:16:11 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:16:34 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 int	in_bounds(t_game *gm, int x, int y)
@@ -38,7 +50,7 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int close_win(t_game *g)
+int	close_win(t_game *g)
 {
 	destroy_game(g, NULL);
 	gc_free_all();

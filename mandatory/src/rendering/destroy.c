@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:17:00 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:17:19 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 void	clear_image(t_game *game)
@@ -15,20 +27,20 @@ void	clear_image(t_game *game)
 
 void	free_map(char **map)
 {
-    int	i;
+	int	i;
 
-    if (!map)
-        return;
-    i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
-void destroy_game(t_game *g, const char *msg)
+void	destroy_game(t_game *g, const char *msg)
 {
 	if (msg)
 		fprintf(stderr, "%s\n", msg);

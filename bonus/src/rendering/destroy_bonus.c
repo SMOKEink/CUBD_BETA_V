@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:56:55 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 11:57:37 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d_bonus.h"
 
 void	clear_image(t_game *game)
@@ -15,20 +27,20 @@ void	clear_image(t_game *game)
 
 void	free_map(char **map)
 {
-    int	i;
+	int	i;
 
-    if (!map)
-        return;
-    i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
-void destroy_game(t_game *g, const char *msg)
+void	destroy_game(t_game *g, const char *msg)
 {
 	if (msg)
 		fprintf(stderr, "%s\n", msg);
@@ -44,7 +56,6 @@ void destroy_game(t_game *g, const char *msg)
 		mlx_destroy_display(g->mlx);
 		free(g->mlx);
 	}
-	gc_free_all();						// yhajbi's code to prevent leaks when closing the game
-	/* free_map(g->map); */				// yhajbi commented because already allocated with gc
+	gc_free_all();
 	exit(0);
 }

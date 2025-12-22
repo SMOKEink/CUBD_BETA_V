@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/22 11:57:51 by makevali          #+#    #+#             */
+/*   Updated: 2025/12/22 12:00:24 by makevali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d_bonus.h"
 
-int key_press(int keycode, t_game *gm)
+int	key_press(int keycode, t_game *gm)
 {
 	if (keycode == XK_Escape)
 		close_win(gm);
@@ -20,10 +32,10 @@ int key_press(int keycode, t_game *gm)
 		toggle_door(gm);
 	else if (keycode == XK_Shift_L)
 		gm->keys.sprint = 1;
-	return 0;
+	return (0);
 }
 
-int key_release(int keycode, t_game *gm)
+int	key_release(int keycode, t_game *gm)
 {
 	if (keycode == XK_w)
 		gm->keys.up = 0;
@@ -39,5 +51,5 @@ int key_release(int keycode, t_game *gm)
 		gm->keys.rot_r = 0;
 	else if (keycode == XK_Shift_L)
 		gm->keys.sprint = 0;
-	return 0;
+	return (0);
 }
