@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:19:52 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 19:08:24 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 03:15:52 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	parse_map_file(char *file_name, t_parse_data *p_data)
 	int	fd;
 
 	p_data->is_valid = 1;
-	p_data->has_door = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		return (printf("Error\nCan't open/inexistent map file\n"),

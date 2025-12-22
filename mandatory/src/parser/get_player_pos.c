@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:50:59 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 19:18:11 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 03:29:42 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ int	check_map_chars(t_parse_data *p_data)
 {
 	int		x;
 	int		y;
-	int		doors;
 	char	**map;
 
 	y = -1;
 	map = p_data->matrix;
-	doors = 0;
 	while (map[++y])
 	{
 		x = -1;
@@ -63,12 +61,8 @@ int	check_map_chars(t_parse_data *p_data)
 		{
 			if (is_valid_char(map[y][x]) == 0)
 				return (printf("culprit = %c\n", map[y][x]), 0);
-			if (map[y][x] == 'D')
-				doors++;
 		}
 	}
-	if (doors > 0 && !p_data->has_door)
-		return (0);
 	return (1);
 }
 
@@ -76,7 +70,7 @@ int	is_valid_char(int c)
 {
 	return (c == '1' || c == '0' || c == 'N'
 		|| c == 'E' || c == 'S' || c == 'W'
-		|| c == ' ' || c == 'D');
+		|| c == ' ');
 }
 
 int	is_player(int c)

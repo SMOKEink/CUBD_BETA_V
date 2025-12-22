@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 20:47:08 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 03:26:30 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	count_height(char **map)
 int	is_inner_char(int c)
 {
 	return (c == '0' || c == 'N' || c == 'E' || c == 'S'
-		|| c == 'W' || c == 'D');
+		|| c == 'W');
 }
 
 int	count_width(char **map, int y)
