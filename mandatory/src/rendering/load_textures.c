@@ -67,26 +67,14 @@ void free_textures(t_game *gm)
 		gm->wall[i].data = NULL;
 		i++;
 	}
-
-	/* i = 0; */						// yhajbi commented because already allocated with gc
-	/* while (i < TEX_WALL_COUNT) */
-	/* { */
-	/* 	if (gm->tex_path[i]) */
-	/* 		free(gm->tex_path[i]); */
-	/* 	gm->tex_path[i] = NULL; */
-	/* 	i++; */
-	/* } */
 	if (gm->door_path)
 	{
 		if (gm->door.img && gm->mlx)
 			mlx_destroy_image(gm->mlx, gm->door.img);
 	    gm->door.img = NULL;
 	    gm->door.data = NULL;
-		/* free(gm->door_path); */		// yhajbi commented because already allocated with gc
 		gm->door_path = NULL;
 	}
-
-	/* ADDED BY yhajbi */
 	if (gm->hand_path)
 	{
 		if (gm->hand.img && gm->mlx)

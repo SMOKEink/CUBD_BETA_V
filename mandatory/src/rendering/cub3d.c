@@ -23,7 +23,7 @@ bool	is_wall(t_game *gm, int x, int y)
 	if (x >= row_width)
 		return (1);
 	c = gm->map[y][x];
-	if (c == '1' || c == ' ' || c == 'D')
+	if (c == '1' || c == ' ')
 		return (1);
 	return (0);
 }
@@ -49,8 +49,6 @@ int	main_function(t_game *gm)
 {
 	move_player(gm);
 	render_image(gm);
-	draw_minimap(gm);
-	draw_hands(gm);
 	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
 	return (0);
 }

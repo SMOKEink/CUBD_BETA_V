@@ -30,13 +30,6 @@ char	map_cell(t_game *gm, int x, int y)
 
 t_tex	*choose_texture(t_game *gm, t_ray *ray)
 {
-	char    cell;
-
-	cell = map_cell(gm, ray->map_x, ray->map_y);
-	if (cell == 'D')
-		return (&gm->door);
-	if (cell == 'd')
-		return (NULL);
 	if (ray->hit_vertical)
 	{
 		if (ray->dir_x > 0)

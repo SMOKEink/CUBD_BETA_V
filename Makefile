@@ -30,9 +30,6 @@ mandatory/src/rendering/destroy.c \
 mandatory/src/rendering/cub3d.c \
 mandatory/src/rendering/hooks.c \
 mandatory/src/main.c \
-mandatory/src/bonus/hands_sprites.c \
-mandatory/src/bonus/minimap.c \
-mandatory/src/bonus/door.c \
 mandatory/src/get_next_line/get_next_line.c \
 mandatory/src/get_next_line/get_next_line_utils.c \
 mandatory/uti/ft_split.c \
@@ -41,6 +38,7 @@ mandatory/uti/memory_cleanup.c \
 mandatory/uti/strutils0.c \
 mandatory/uti/strutils1.c \
 mandatory/uti/strutils2.c
+
 SRC_BONUS = bonus/src/bonus/minimap_bonus.c \
 bonus/src/bonus/door_bonus.c \
 bonus/src/bonus/hands_sprites_bonus.c \
