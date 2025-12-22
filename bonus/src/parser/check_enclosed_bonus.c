@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_enclosed.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
+/*   Updated: 2025/12/17 20:47:08 by yhajbi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/cub3d_bonus.h"
+
+int	check_enclosed_helper1(char	**map, int x, int y, int in_spc);
+int	count_height(char **map);
+int	count_width(char **map, int y);
+
+int	check_enclosed(t_parse_data *p_data)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	y = 0;
+	map = p_data->matrix;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (is_inner_char(map[y][x]))
+			{
+				if (check_neighbors(map, x, y) == 0)
+					return (printf("Error\n%c at [%d, %d]\n",
+							map[y][x], x, y), 0);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
+
+int	check_enclosed_helper1(char	**map, int x, int y, int in_spc)
+{
+	if (map[y][x] == ' ')
+		in_spc = 1;
+	else if (map[y][x] == '1' && in_spc == 1)
+		in_spc = 0;
+	else if (is_inner_char(map[y][x]) && in_spc == 1)
+		return (0);
+	else if (is_inner_char(map[y][x]) && y == 0)
+		return (0);
+	else if (is_inner_char(map[y][x]) && y == count_height(map) - 1)
+		return (0);
+	else if (is_inner_char(map[y][x]) && in_spc == 1)
+		return (0);
+	else if (is_inner_char(map[y][x]) && map[y][x + 1] == ' ')
+		return (0);
+	else if (is_inner_char(map[y][x]) && x == 0)
+		return (0);
+	else if (is_inner_char(map[y][x]) && x == count_width(map, y) - 1)
+		return (0);
+	return (1);
+}
+
+int	count_height(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int	is_inner_char(int c)
+{
+	return (c == '0' || c == 'N' || c == 'E' || c == 'S'
+		|| c == 'W' || c == 'D');
+}
+
+int	count_width(char **map, int y)
+{
+	int	x;
+
+	x = 0;
+	while (map[y][x])
+		x++;
+	return (x);
+}
