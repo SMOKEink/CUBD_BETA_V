@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 11:37:45 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/11/12 16:47:54 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 03:14:23 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ t_map_line	*interpret_file_content(t_parse_data *p_data)
 	limit = 6;
 	while (p_data->file_content[++i])
 	{
-		if (ft_strstr(p_data->file_content[i], "DO "))
-		{
-			ifc_helper2(p_data, &map_lines, &limit, &i);
-			continue ;
-		}
 		if (i == limit && !txtr_found)
 			ifc_helper1(p_data, &map_lines, &txtr_found, i);
 		else

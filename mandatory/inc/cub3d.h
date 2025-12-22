@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 02:03:10 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/22 03:14:47 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,8 +270,6 @@ int				in_bounds(t_game *gm, int x, int y);
 
 void					ifc_helper1(t_parse_data *p_data,
 							t_map_line **map_lines, int *txtr_found, int i);
-void					ifc_helper2(t_parse_data *p_data,
-							t_map_line **map_lines, int *limit, int *i);
 void					ifc_helper3(t_parse_data *p_data,
 							t_map_line **map_lines, int i);
 t_map_line				*create_line_node(char *line);
