@@ -1,0 +1,4 @@
+*.o
+a.out
+cub3d
+cub3d_bonus
