@@ -92,16 +92,13 @@ all: $(NAME)
 
 bonus: $(NAME_BONUS)
 
-$(MLX_LIB):
-	@make -C $(MLX_DIR)
-
-$(NAME): $(OBJ) $(MLX_LIB)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $@
 
 %.o: %.c $(HED)
 	$(CC) $(CFLAGS) -I./mandatory/inc/ -I$(MLX_DIR) -c $< -o $@
 
-$(NAME_BONUS) : $(OBJ_BONUS) $(MLX_LIB)
+$(NAME_BONUS) : $(OBJ_BONUS)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX_FLAGS) -o $@
 
 %_bonus.o: %_bonus.c $(HED_BONUS)
