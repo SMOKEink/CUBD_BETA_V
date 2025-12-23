@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_data.c                                     :+:      :+:    :+:   */
+/*   extract_data_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:10:45 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/15 04:22:42 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/23 19:24:43 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	extract_data(t_parse_data *p_data)
 	initialize_rgb(p_data);
 	line = extract_assets(p_data);
 	if (!line || !check_color_data(p_data->assets))
-		return (printf("Error\nInvalid color data\n"), 0);
+		return (printf("Error\nInvalid asset data\n"), 0);
 	p_data->assets->f_color = (p_data->assets->f_rgb[0] << 16)
 		| (p_data->assets->f_rgb[1] << 8) | p_data->assets->f_rgb[2];
 	p_data->assets->c_color = (p_data->assets->c_rgb[0] << 16)
@@ -60,8 +60,6 @@ t_map_line	*extract_assets(t_parse_data *p_data)
 			extract_color(p_data, node, 1);
 		else if (ft_strncmp("F ", node->line, 2) == 0)
 			extract_color(p_data, node, 2);
-		else
-			return (printf("Error\nInvalid asset data\n"), NULL);
 		node = node->next;
 	}
 	return (node);
@@ -113,7 +111,7 @@ int	validate_values(char **values)
 	while (values[i])
 	{
 		if (ft_atoi(values[i]) > 255 || ft_atoi(values[i]) < 0)
-			return (printf("Error\nInvalid color values\n"), 0);
+			return (0);
 		j = 0;
 		while (values[i][j])
 		{

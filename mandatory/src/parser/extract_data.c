@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:10:45 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 20:52:06 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:25:57 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	validate_values(char **values)
 	while (values[i])
 	{
 		if (ft_atoi(values[i]) > 255 || ft_atoi(values[i]) < 0)
-			return (printf("Error\nInvalid color values\n"), 0);
+			return (0);
 		j = 0;
 		while (values[i][j])
 		{
