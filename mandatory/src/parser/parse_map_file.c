@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:19:52 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 21:01:12 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:07:37 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	parse_map_file(char *file_name, t_parse_data *p_data)
 			p_data->is_valid = 0, 0);
 	p_data->file_content = get_file_content(fd);
 	if (!p_data->file_content)
-		return (close(fd), printf("Error\nIncomplete map\n"), 0);
+		return (close(fd), 0);
 	p_data->map_lines = interpret_file_content(p_data);
 	if (extract_data(p_data) == 0)
 		return (close(fd), 0);
@@ -51,7 +51,15 @@ char	**get_file_content(int fd)
 
 	file_content = ft_split(join_file_lines(fd), '\n');
 	if (!file_content)
+	{
+		printf("Error\nIncomplete map\n");
 		return (NULL);
+	}
+	if (check_duplicates(file_content) == 0)
+	{
+		printf("Error\nDuplicate map lines\n");
+		return (NULL);
+	}
 	return (file_content);
 }
 
