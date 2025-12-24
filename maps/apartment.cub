@@ -1,10 +1,10 @@
-NO ./assets/north_wall.xpm
-WE ./assets/west_wall.xpm
-EA ./assets/east_wall.xpm
-SO ./assets/south_wall.xpm
+NO ./assets/wall_1.xpm
+SO ./assets/wall_2.xpm
+WE ./assets/wall_3.xpm
+EA ./assets/wall_4.xpm
 
 C 153,204,255
-F 255,50,184
+F 40,40,40
 
 11111111111111111111
 10010000000000000001

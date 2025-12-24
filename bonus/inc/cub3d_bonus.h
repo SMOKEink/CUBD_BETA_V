@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/24 19:10:47 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 20:43:12 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 # include <unistd.h>
 
 # define WIDTH 1920
-# define HEIGHT 1000
+# define HEIGHT 1080
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
 # define ROT_SPEED 0.05
-# define MOUSE_ROT_SPEED 0.00035
+# define MOUSE_ROT_SPEED 0.0005
 
 # define NO_WALL "./assets/north_wall.xpm"
 # define EA_WALL "./assets/east_wall.xpm"

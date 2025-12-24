@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 10:44:05 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/23 09:00:04 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 20:48:08 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <unistd.h>
 
 # define WIDTH 1920
-# define HEIGHT 1000
+# define HEIGHT 1080
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
@@ -209,7 +209,7 @@ int				key_release(int keycode, t_game *g);
 void			move_player(t_game *gm);
 int				start_game(t_game *gm);
 int				main_function(t_game *gm);
-int				collides_at(t_game *gm, double x, double y);
+int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 unsigned int	texel_at(t_tex *t, int x, int y);
 void			destroy_game(t_game *g, const char *msg);
