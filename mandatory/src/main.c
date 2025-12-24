@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yhajbi <yhajbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
 /*   Updated: 2025/12/17 19:23:32 by yhajbi           ###   ########.fr       */

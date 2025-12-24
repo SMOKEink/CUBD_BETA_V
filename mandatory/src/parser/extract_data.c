@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yhajbi <yhajbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 15:10:45 by yhajbi            #+#    #+#             */
 /*   Updated: 2025/12/22 03:16:51 by yhajbi           ###   ########.fr       */
