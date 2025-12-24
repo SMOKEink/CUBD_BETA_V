@@ -3,35 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   movements2_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:58:03 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/22 12:08:02 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 20:56:36 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d_bonus.h"
 
-int	collides_at(t_game *gm, double x, double y)
+int	collides_at(t_game *gm, double x, double y, double r)
 {
-	double	r;
 	int		x_min;
-	int		x_max;
 	int		y_min;
-	int		y_max;
 	int		ix;
 	int		iy;
 
-	r = 0.2;
 	x_min = floor(x - r);
 	y_min = floor(y - r);
-	x_max = floor(x + r);
-	y_max = floor(y + r);
 	ix = x_min - 1;
-	while (++ix <= x_max)
+	while (++ix <= floor(x + r))
 	{
 		iy = y_min - 1;
-		while (++iy <= y_max)
+		while (++iy <= floor(y + r))
 			if (is_wall(gm, ix, iy))
 				return (1);
 	}

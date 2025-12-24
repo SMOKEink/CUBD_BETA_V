@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:18:46 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/22 11:20:24 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 20:44:03 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	hit_position(t_game *gm, t_tex *tex, t_ray *ray)
 		hit_point = gm->player.x + ray->perp_dist * ray->dir_x;
 	hit_point -= floor(hit_point);
 	tex_x = (int)(hit_point * (double)tex->w);
-	if (ray->hit_vertical && ray->dir_x > 0) //correct mirror textures
+	if (ray->hit_vertical && ray->dir_x > 0)
 		tex_x = tex->w - tex_x;
 	if (!ray->hit_vertical && ray->dir_y < 0)
 		tex_x = tex->w - tex_x;
