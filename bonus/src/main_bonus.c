@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 11:58:21 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/23 19:09:21 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ int	main(int argc, char *argv[])
 	memset(&vars, 0, sizeof(vars));
 	if (parse_map_file(argv[1], &vars.p_data) == 0 || vars.p_data.is_valid == 0)
 		return (gc_free_all(), 3);
-	if (check_duplicates(vars.p_data) == 0)
-		return (gc_free_all(),
-			printf("Error\nDuplicate asset lines in map file\n"), 3);
 	merge_data(vars.p_data, &g);
 	g.filename = argv[1];
 	start_game(&g);

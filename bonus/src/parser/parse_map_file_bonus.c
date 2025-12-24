@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map_file.c                                   :+:      :+:    :+:   */
+/*   parse_map_file_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:19:52 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 19:08:24 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:11:24 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,15 @@ char	**get_file_content(int fd)
 
 	file_content = ft_split(join_file_lines(fd), '\n');
 	if (!file_content)
+	{
+		printf("Error\nIncomplete map file\n");
 		return (NULL);
+	}
+	if (check_duplicates(file_content) == 0)
+	{
+		printf("Error\nDuplicate map lines\n");
+		return (NULL);
+	}
 	return (file_content);
 }
 

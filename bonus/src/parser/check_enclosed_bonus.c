@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_enclosed.c                                   :+:      :+:    :+:   */
+/*   check_enclosed_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 12:42:13 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 20:47:08 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:37:03 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	check_enclosed(t_parse_data *p_data)
 			if (is_inner_char(map[y][x]))
 			{
 				if (check_neighbors(map, x, y) == 0)
-					return (printf("Error\n%c at [%d, %d]\n",
-							map[y][x], x, y), 0);
+					return (0);
 			}
 			x++;
 		}

@@ -92,13 +92,16 @@ all: $(NAME)
 
 bonus: $(NAME_BONUS)
 
-$(NAME): $(OBJ)
+$(MLX_LIB):
+	make -C $(MLX_DIR)
+
+$(NAME): $(OBJ) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $@
 
 %.o: %.c $(HED)
 	$(CC) $(CFLAGS) -I./mandatory/inc/ -I$(MLX_DIR) -c $< -o $@
 
-$(NAME_BONUS) : $(OBJ_BONUS)
+$(NAME_BONUS) : $(OBJ_BONUS) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX_FLAGS) -o $@
 
 %_bonus.o: %_bonus.c $(HED_BONUS)
@@ -106,6 +109,7 @@ $(NAME_BONUS) : $(OBJ_BONUS)
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
+	make clean -C $(MLX_DIR)
 
 fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
