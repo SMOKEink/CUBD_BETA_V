@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:57:57 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/22 12:16:05 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 18:58:39 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	load_tex_any(t_game *gm, t_tex *tex, const char *path)
 	return (0);
 }
 
-int	load_tex(t_game *gm, int idx, const char *path)
+int	load_tex_wall(t_game *gm, int idx, const char *path)
 {
 	t_tex	*t;
 
@@ -61,7 +61,7 @@ int	load_textures(t_game *gm)
 	i = 0;
 	while (i < TEX_WALL_COUNT)
 	{
-		if (load_tex(gm, i, gm->tex_path[i]))
+		if (load_tex_wall(gm, i, gm->tex_path[i]))
 			return (1);
 		i++;
 	}

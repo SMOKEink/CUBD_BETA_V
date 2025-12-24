@@ -6,15 +6,14 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 11:58:03 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/22 12:08:02 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 19:08:25 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d_bonus.h"
 
-int	collides_at(t_game *gm, double x, double y)
+int	collides_at(t_game *gm, double x, double y, double r)
 {
-	double	r;
 	int		x_min;
 	int		x_max;
 	int		y_min;
@@ -22,7 +21,6 @@ int	collides_at(t_game *gm, double x, double y)
 	int		ix;
 	int		iy;
 
-	r = 0.2;
 	x_min = floor(x - r);
 	y_min = floor(y - r);
 	x_max = floor(x + r);

@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:29:22 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 12:22:22 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/24 19:10:47 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,8 @@ typedef struct s_slice
 # define COL_PLAYER 16727100
 # define COL_DIRECTION 16737380
 
+# define COLLIDE 0.2
+
 # define MMAP_X 80
 # define MMAP_Y 80
 # define MMAP_R 70
@@ -246,7 +248,7 @@ int				key_release(int keycode, t_game *g);
 void			move_player(t_game *gm);
 int				start_game(t_game *gm);
 int				main_function(t_game *gm);
-int				collides_at(t_game *gm, double x, double y);
+int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 void			draw_minimap(struct s_game *gm);
 unsigned int	texel_at(t_tex *t, int x, int y);
