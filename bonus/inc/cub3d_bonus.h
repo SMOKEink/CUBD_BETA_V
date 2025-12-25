@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 06:47:38 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/25 21:49:41 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,7 +294,7 @@ int				ft_charcount(char *s, int c);
 void			free_map_lines(t_map_line *head);
 void			*gc_malloc(size_t size);
 void			gc_free_all(void);
-int				check_duplicates(t_parse_data p_data);
+int				check_duplicates(char **file_content);
 int				check_outofbounds_floor(char **map, int x, int y);
 int				check_color_data(t_assets *a);
 void			merge_data(t_parse_data p_data, t_game *g);
