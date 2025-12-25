@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:01:31 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:01:32 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/25 03:45:45 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	map_cell(t_game *gm, int x, int y)
 
 	if (y < 0 || y >= gm->map_h)
 		return ('1');
-	len = strlen(gm->map[y]);
+	len = ft_strlen(gm->map[y]);
 	if (x < 0 || x >= len)
 		return ('1');
 	return (gm->map[y][x]);

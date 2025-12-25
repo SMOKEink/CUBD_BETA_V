@@ -37,7 +37,8 @@ mandatory/uti/garbage_collector.c \
 mandatory/uti/memory_cleanup.c \
 mandatory/uti/strutils0.c \
 mandatory/uti/strutils1.c \
-mandatory/uti/strutils2.c
+mandatory/uti/strutils2.c \
+mandatory/uti/ft_memset.c
 
 SRC_BONUS = bonus/src/bonus/minimap.c \
 bonus/src/bonus/door.c \
@@ -75,7 +76,8 @@ bonus/uti/garbage_collector_bonus.c \
 bonus/uti/memory_cleanup_bonus.c \
 bonus/uti/strutils0_bonus.c \
 bonus/uti/strutils1_bonus.c \
-bonus/uti/strutils2_bonus.c
+bonus/uti/strutils2_bonus.c \
+bonus/uti/ft_memset_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)

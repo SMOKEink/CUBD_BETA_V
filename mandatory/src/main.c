@@ -23,8 +23,8 @@ int	main(int argc, char *argv[])
 		return (printf("Error\nInvalid arguments\n"), 1);
 	if (check_extension(argv[1]) == 0)
 		return (printf("Error\nInvalid file extension\n"), 2);
-	memset(&g, 0, sizeof(g));
-	memset(&vars, 0, sizeof(vars));
+	ft_memset(&g, 0, sizeof(g));
+	ft_memset(&vars, 0, sizeof(vars));
 	if (parse_map_file(argv[1], &vars.p_data) == 0 || vars.p_data.is_valid == 0)
 		return (gc_free_all(), 3);
 	if (check_duplicates(vars.p_data) == 0)
