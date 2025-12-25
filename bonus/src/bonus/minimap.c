@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:46 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:00:48 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/25 06:58:05 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	draw_disk_pixel(t_game *gm, int px, int py, double cell_per_px)
 	wy = gm->player.y + y_off * cell_per_px;
 	cell = map_cell(gm, (int)floor(wx), (int)floor(wy));
 	if (cell == '1')
-		put_pixel(gm, px, py, COL_WALL);
+		put_pixel(gm, px, py, COL_CUB);
 	else if (cell == 'D')
 		put_pixel(gm, px, py, COL_DOOR);
 	else if (cell == 'd')

@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 03:57:33 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/25 06:47:38 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <unistd.h>
 
 # define WIDTH 1920
-# define HEIGHT 1080
+# define HEIGHT 1008
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
@@ -166,20 +166,20 @@ typedef struct s_slice
 	int					column;
 }						t_slice;
 
-# define COL_ROAD 1579036
-# define COL_RING 16777215
-# define COL_WALL 0
-# define COL_DOOR 6618980
-# define COL_OPENED_DOOR 2652200
-# define COL_PLAYER 16727100
-# define COL_DIRECTION 16737380
+# define COL_ROAD			0x202024
+# define COL_CUB			0x000000
+# define COL_DIRECTION		0xFF6464
+# define COL_PLAYER			0xFF0000
+# define COL_DOOR			0x00FF00
+# define COL_OPENED_DOOR	0x287828
+
+
+# define MMAP_X 90
+# define MMAP_Y 90
+# define MMAP_R 80
+# define MMAP_PIX_PER_CELL 8
 
 # define COLLIDE 0.2
-
-# define MMAP_X 80
-# define MMAP_Y 80
-# define MMAP_R 70
-# define MMAP_PIX_PER_CELL 7
 # define HAND_SCALE	1.2
 
 typedef struct s_game
