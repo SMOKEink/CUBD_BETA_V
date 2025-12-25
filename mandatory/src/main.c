@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/23 19:06:32 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/25 22:00:36 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	check_extension(char *file_name)
 	i = 0;
 	if (file_name[i] == '.' && file_name[i + 1] == '/')
 		i += 2;
+	else if (file_name[i] == '.' && file_name[i + 1] != '/')
+		i++;
 	if (file_name[i] == '.' && ft_strcmp(file_name, ".cub"))
 		return (0);
 	while (file_name[i] && file_name[i] != '.')
