@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yhajbi <yhajbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
 /*   Updated: 2025/12/23 19:06:32 by yhajbi           ###   ########.fr       */
@@ -23,8 +23,8 @@ int	main(int argc, char *argv[])
 		return (printf("Error\nInvalid arguments\n"), 1);
 	if (check_extension(argv[1]) == 0)
 		return (printf("Error\nInvalid file extension\n"), 2);
-	memset(&g, 0, sizeof(g));
-	memset(&vars, 0, sizeof(vars));
+	ft_memset(&g, 0, sizeof(g));
+	ft_memset(&vars, 0, sizeof(vars));
 	if (parse_map_file(argv[1], &vars.p_data) == 0 || vars.p_data.is_valid == 0)
 		return (gc_free_all(), 3);
 	merge_data(vars.p_data, &g);

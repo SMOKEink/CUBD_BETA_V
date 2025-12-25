@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 10:44:05 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/24 21:02:10 by yhajbi           ###   ########.fr       */
+/*   Created: 2025/12/22 10:44:05 by yhajbi          #+#    #+#             */
+/*   Updated: 2025/12/25 21:44:36 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,7 @@ size_t			ft_strlcpy(char *dest, const char *src, size_t n);
 char			*ft_strdup(const char *s);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *nptr);
+void			*ft_memset(void *b, int c, size_t len);
 int				ft_splitlen(char **split);
 char			*ft_strstr(char *s1, char *s2);
 int				ft_charcount(char *s, int c);

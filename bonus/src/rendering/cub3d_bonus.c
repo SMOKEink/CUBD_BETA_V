@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 11:56:36 by makevali          #+#    #+#             */
-/*   Updated: 2025/12/22 12:11:28 by makevali         ###   ########.fr       */
+/*   Created: 2025/12/24 20:59:32 by aachata           #+#    #+#             */
+/*   Updated: 2025/12/25 03:44:23 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	in_bounds(t_game *gm, int x, int y)
 
 	if (y < 0 || y >= gm->map_h)
 		return (0);
-	rowlen = (int)strlen(gm->map[y]);
+	rowlen = (int)ft_strlen(gm->map[y]);
 	if (x < 0 || x >= rowlen)
 		return (0);
 	return (1);
@@ -31,7 +31,7 @@ bool	is_wall(t_game *gm, int x, int y)
 
 	if (x < 0 || y < 0 || y >= gm->map_h)
 		return (1);
-	row_width = (int)strlen(gm->map[y]);
+	row_width = (int)ft_strlen(gm->map[y]);
 	if (x >= row_width)
 		return (1);
 	c = gm->map[y][x];
