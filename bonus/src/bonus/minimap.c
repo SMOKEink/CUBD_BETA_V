@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:46 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/26 17:07:59 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 11:38:06 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	draw_player_marker(t_game *gm)
 
 static void	draw_player_direction(t_game *gm, double p_dir_len)
 {
-	double	step;
+	double	i;
 	double	dir_x;
 	double	dir_y;
 	int		px;
@@ -45,30 +45,30 @@ static void	draw_player_direction(t_game *gm, double p_dir_len)
 
 	dir_x = gm->player.dir_x;
 	dir_y = gm->player.dir_y;
-	step = 0;
-	while (step <= p_dir_len)
+	i = 0;
+	while (i <= p_dir_len)
 	{
-		px = (int)(MMAP_X - dir_x * step);
-		py = (int)(MMAP_Y + dir_y * step);
+		px = (int)(MMAP_X - dir_x * i);
+		py = (int)(MMAP_Y + dir_y * i);
 		if (px >= 0 && py >= 0 && px < WIDTH && py < HEIGHT)
 			put_pixel(gm, px, py, COL_DIRECTION);
-		step++;
+		i++;
 	}
 }
 
 static void	draw_disk_pixel(t_game *gm, int px, int py, double cell_per_px)
 {
-	int		x_off;
-	int		y_off;
-	double	wx;
-	double	wy;
+	int		x;
+	int		y;
+	double	mx;
+	double	my;
 	char	cell;
 
-	x_off = px - MMAP_X;
-	y_off = py - MMAP_Y;
-	wx = gm->player.x - x_off * cell_per_px;
-	wy = gm->player.y + y_off * cell_per_px;
-	cell = map_cell(gm, (int)floor(wx), (int)floor(wy));
+	x = px - MMAP_X;
+	y = py - MMAP_Y;
+	mx = gm->player.x - x * cell_per_px;
+	my = gm->player.y + y * cell_per_px;
+	cell = map_cell(gm, (int)floor(mx), (int)floor(my));
 	if (cell == '1')
 		put_pixel(gm, px, py, COL_CUB);
 	else if (cell == 'D')
