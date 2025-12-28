@@ -27,7 +27,7 @@ mandatory/src/rendering/rendering.c \
 mandatory/src/rendering/start_game.c \
 mandatory/src/rendering/load_textures.c \
 mandatory/src/rendering/destroy.c \
-mandatory/src/rendering/cub3d.c \
+mandatory/src/rendering/helper.c \
 mandatory/src/rendering/hooks.c \
 mandatory/src/main.c \
 mandatory/src/get_next_line/get_next_line.c \
@@ -67,7 +67,7 @@ bonus/src/rendering/rendering_bonus.c \
 bonus/src/rendering/start_game_bonus.c \
 bonus/src/rendering/destroy_bonus.c \
 bonus/src/rendering/load_textures_bonus.c \
-bonus/src/rendering/cub3d_bonus.c \
+bonus/src/rendering/helper_bonus.c \
 bonus/src/rendering/hooks_bonus.c \
 bonus/src/rendering/movements_bonus.c \
 bonus/src/main_bonus.c \
