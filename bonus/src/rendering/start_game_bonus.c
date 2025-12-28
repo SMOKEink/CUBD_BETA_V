@@ -6,11 +6,22 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:26 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 09:23:23 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 10:31:03 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d_bonus.h"
+
+int	main_function(t_game *gm)
+{
+	gm->player.moving = false;
+	move_player(gm);
+	render_image(gm);
+	draw_minimap(gm);
+	draw_hands(gm);
+	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
+	return (0);
+}
 
 int	start_game(t_game *gm)
 {

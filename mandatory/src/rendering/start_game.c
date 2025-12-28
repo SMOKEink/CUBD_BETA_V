@@ -6,11 +6,19 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:02:04 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 09:14:45 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 10:33:09 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	main_function(t_game *gm)
+{
+	move_player(gm);
+	render_image(gm);
+	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
+	return (0);
+}
 
 int	start_game(t_game *gm)
 {

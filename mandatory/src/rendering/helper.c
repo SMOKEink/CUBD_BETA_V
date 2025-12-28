@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/24 20:59:32 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 08:32:41 by makevali         ###   ########.fr       */
+/*   Created: 2025/12/24 21:01:22 by aachata           #+#    #+#             */
+/*   Updated: 2025/12/28 10:32:55 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d_bonus.h"
+#include "../../inc/cub3d.h"
 
 int	in_bounds(t_game *gm, int x, int y)
 {
@@ -35,7 +35,7 @@ bool	is_wall(t_game *gm, int x, int y)
 	if (x >= row_width)
 		return (1);
 	c = gm->map[y][x];
-	if (c == '1' || c == ' ' || c == 'D')
+	if (c == '1' || c == ' ')
 		return (1);
 	return (0);
 }
@@ -48,15 +48,4 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 		return ;
 	dst = gm->frame.data_img + y * gm->frame.line_len + x * (gm->frame.bpp / 8);
 	*(unsigned int *)dst = color;
-}
-
-int	main_function(t_game *gm)
-{
-	gm->player.moving = false;
-	move_player(gm);
-	render_image(gm);
-	draw_minimap(gm);
-	draw_hands(gm);
-	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
-	return (0);
 }
