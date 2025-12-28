@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 06:47:38 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 09:18:41 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <unistd.h>
 
 # define WIDTH 1920
-# define HEIGHT 1008
+# define HEIGHT 1005
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
@@ -179,7 +179,6 @@ typedef struct s_slice
 # define MMAP_R 80
 # define MMAP_PIX_PER_CELL 8
 
-# define COLLIDE 0.2
 # define HAND_SCALE	1.2
 
 typedef struct s_game
@@ -252,7 +251,7 @@ int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 void			draw_minimap(struct s_game *gm);
 unsigned int	texel_at(t_tex *t, int x, int y);
-void			destroy_game(t_game *g, const char *msg);
+void			destroy_game(t_game *gm, const char *msg);
 void			draw_hands(t_game *gm);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);

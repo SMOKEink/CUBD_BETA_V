@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:46 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 06:58:05 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/26 17:07:59 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	draw_minimap_disk(t_game *gm, double cell_per_px)
 	int		py;
 	int		r_sq;
 
-	r_sq = MMAP_R * MMAP_R;
+	r_sq = MMAP_R * MMAP_R; 
 	y = -MMAP_R - 1;
 	while (++y <= MMAP_R)
 	{

@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:32 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 03:44:23 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 08:32:41 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 		return ;
 	dst = gm->frame.data_img + y * gm->frame.line_len + x * (gm->frame.bpp / 8);
 	*(unsigned int *)dst = color;
-}
-
-int	close_win(t_game *g)
-{
-	destroy_game(g, NULL);
-	gc_free_all();
-	return (0);
 }
 
 int	main_function(t_game *gm)

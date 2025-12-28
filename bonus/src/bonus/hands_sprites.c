@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hands_sprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:55 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:00:58 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/25 08:33:59 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	draw_hands(t_game *gm)
 	if (!gm->keys.sprint)
 		bob = (int)(sin(gm->hand_phase) * 20);
 	else
-		bob = (int)(sin(gm->hand_phase) * 40);
+		bob = (int)(sin(gm->hand_phase) * 45);
 	hand.origin_x = (WIDTH - hand.target_w) / 2;
 	hand.origin_y = HEIGHT - hand.target_h + (HEIGHT / 20) + bob;
 	draw_scaled_hand(gm, &hand);

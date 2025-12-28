@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:26 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 20:59:29 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/28 09:23:23 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	start_game(t_game *gm)
 {
 	gm->mlx = mlx_init();
 	if (!gm->mlx)
-		return (printf("Error\nMLX init failed\n"));
+		return (printf("Error\nMlx init failed\n"));
 	gm->win = mlx_new_window(gm->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!gm->win)
 		return (printf("Error\nWindow creation failed\n"));
@@ -27,9 +27,9 @@ int	start_game(t_game *gm)
 		return (printf("Error\nTexture load failed\n"));
 	mlx_mouse_hide(gm->mlx, gm->win);
 	mlx_loop_hook(gm->mlx, main_function, gm);
-	mlx_hook(gm->win, 2, KeyPressMask, key_press, gm);
-	mlx_hook(gm->win, 3, KeyReleaseMask, key_release, gm);
-	mlx_hook(gm->win, 17, 0, close_win, gm);
+	mlx_hook(gm->win, KeyPress, KeyPressMask, key_press, gm);
+	mlx_hook(gm->win, KeyRelease, KeyReleaseMask, key_release, gm);
+	mlx_hook(gm->win, DestroyNotify, 0, close_win, gm);
 	mlx_hook(gm->win, MotionNotify, PointerMotionMask, mouse_move, gm);
 	mlx_loop(gm->mlx);
 	return (0);
