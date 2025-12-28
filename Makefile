@@ -106,7 +106,7 @@ $(NAME): $(OBJ) $(MLX_LIB)
 $(NAME_BONUS) : $(OBJ_BONUS) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) $(MLX_FLAGS) -o $@
 
-%_bonus.o: %_bonus.c $(HED_BONUS)
+%.o: %.c $(HED_BONUS)
 	$(CC) $(CFLAGS) -I./bonus/inc/ -I$(MLX_DIR) -c $< -o $@
 
 clean:
