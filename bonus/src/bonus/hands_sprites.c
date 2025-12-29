@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:55 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 08:33:59 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/29 17:30:28 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static unsigned int	extract_hand_color(t_game *gm, t_hand *hand, int ix, int iy)
 
 	tx = ix * gm->hand.w / hand->target_w;
 	ty = iy * gm->hand.h / hand->target_h;
-	col = texel_at(&gm->hand, tx, ty);
+	col = fetch_tex(&gm->hand, tx, ty);
 	if (!(col & 0x00FFFFFF))
 		return (0);
 	return (col);

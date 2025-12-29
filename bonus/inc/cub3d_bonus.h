@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 09:18:41 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/29 17:30:28 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct s_slice
 	int					line_start;
 	int					line_end;
 	double				tex_step;
-	double				tex_pos;
+	double				tex_pos_y;
 	int					tex_x;
 	int					tex_y;
 	int					column;
@@ -172,7 +172,6 @@ typedef struct s_slice
 # define COL_PLAYER			0xFF0000
 # define COL_DOOR			0x00FF00
 # define COL_OPENED_DOOR	0x287828
-
 
 # define MMAP_X 90
 # define MMAP_Y 90
@@ -250,7 +249,7 @@ int				main_function(t_game *gm);
 int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 void			draw_minimap(struct s_game *gm);
-unsigned int	texel_at(t_tex *t, int x, int y);
+unsigned int	fetch_tex(t_tex *t, int x, int y);
 void			destroy_game(t_game *gm, const char *msg);
 void			draw_hands(t_game *gm);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
