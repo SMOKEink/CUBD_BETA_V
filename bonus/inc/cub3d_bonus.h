@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/29 17:30:28 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/30 19:21:36 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-# define WIDTH 1920
-# define HEIGHT 1005
+# define WIDTH 	1920
+# define HEIGHT	1080
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
@@ -250,7 +250,7 @@ int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 void			draw_minimap(struct s_game *gm);
 unsigned int	fetch_tex(t_tex *t, int x, int y);
-void			destroy_game(t_game *gm, const char *msg);
+void			destroy_game(t_game *gm);
 void			draw_hands(t_game *gm);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
+/*   helper_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:32 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 10:30:55 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/30 19:24:31 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 	dst = gm->frame.data_img + y * gm->frame.line_len + x * (gm->frame.bpp / 8);
 	*(unsigned int *)dst = color;
 }
-

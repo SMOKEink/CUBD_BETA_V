@@ -212,7 +212,7 @@ int				main_function(t_game *gm);
 int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 unsigned int	fetch_tex(t_tex *t, int x, int y);
-void			destroy_game(t_game *g, const char *msg);
+void			destroy_game(t_game *g);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);
 void			draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray);

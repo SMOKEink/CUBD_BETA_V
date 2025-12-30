@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:46 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 11:38:06 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/30 19:24:22 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	draw_minimap_disk(t_game *gm, double cell_per_px)
 	int		py;
 	int		r_sq;
 
-	r_sq = MMAP_R * MMAP_R; 
+	r_sq = MMAP_R * MMAP_R;
 	y = -MMAP_R - 1;
 	while (++y <= MMAP_R)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:02:04 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 10:33:09 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/30 19:24:01 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,20 @@ int	main_function(t_game *gm)
 	return (0);
 }
 
+static void	protect_macros(void)
+{
+	if (HEIGHT < 0 || WIDTH < 0 || MOVE_SPEED < 0 || SPRINT_SPEED < 0
+		|| TEX_WALL_COUNT != 4 || MOUSE_ROT_SPEED < 0)
+	{
+		printf("Error\nDON'T USE NEGATIVE NUMBERS !!!\n");
+		gc_free_all();
+		exit(1);
+	}
+}
+
 int	start_game(t_game *gm)
 {
+	protect_macros();
 	gm->mlx = mlx_init();
 	if (!gm->mlx)
 		return (printf("Error\nMLX init failed\n"));
