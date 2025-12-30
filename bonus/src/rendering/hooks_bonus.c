@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/24 21:02:59 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 08:33:04 by makevali         ###   ########.fr       */
+/*   Created: 2025/12/30 18:09:38 by aachata           #+#    #+#             */
+/*   Updated: 2025/12/30 18:52:12 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	key_release(int keycode, t_game *gm)
 	return (0);
 }
 
-int	close_win(t_game *g)
+int	close_win(t_game *gm)
 {
-	destroy_game(g, NULL);
+	destroy_game(gm);
 	gc_free_all();
 	return (0);
 }
