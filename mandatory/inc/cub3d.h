@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 10:44:05 by yhajbi          #+#    #+#             */
-/*   Updated: 2025/12/30 19:32:35 by yhajbi           ###   ########.fr       */
+/*   Created: 2025/12/30 19:31:38 by aachata           #+#    #+#             */
+/*   Updated: 2025/12/30 19:59:22 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
 # define ROT_SPEED 0.05
-# define MOUSE_ROT_SPEED 0.00035
+# define MOUSE_ROT_SPEED 0.0005
 
 # define NO_WALL "./assets/north_wall.xpm"
 # define EA_WALL "./assets/east_wall.xpm"
