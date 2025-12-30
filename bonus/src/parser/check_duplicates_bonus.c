@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_duplicates.c                                 :+:      :+:    :+:   */
+/*   check_duplicates_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhajbi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:02:15 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/17 19:17:49 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/23 19:11:00 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int	has_only(char *s, int c);
 int	check_duplicates_helper(char **content, int i, int *j, int *count);
 
-int	check_duplicates(t_parse_data p_data)
+int	check_duplicates(char **file_content)
 {
 	char	**content;
 	int		i;
 	int		j;
 	int		count;
 
-	content = p_data.file_content;
+	content = file_content;
 	i = 0;
 	while (content[i])
 	{

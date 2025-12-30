@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:26:18 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/22 02:48:33 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/30 18:12:05 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ void	*gc_malloc(size_t size)
 	head = get_gc_head();
 	ptr = malloc(size);
 	if (!ptr)
+	{
+		gc_free_all();
+		exit(1);
 		return (NULL);
+	}
 	node = malloc(sizeof(t_garbage));
 	if (!node)
 	{
 		free(ptr);
+		gc_free_all();
+		exit(1);
 		return (NULL);
 	}
 	node->ptr = ptr;
