@@ -1,12 +1,11 @@
-SO assets/south_wall.xpm
 NO assets/north_wall.xpm
+SO assets/south_wall.xpm
 WE assets/west_wall.xpm
 EA assets/east_wall.xpm
 
-C 111,132,158
-F 46,40,255
+F 220,100,0
+C 225,30,0
 
-111
-101
-1E1
-111
+11111
+1N0 1
+11111
