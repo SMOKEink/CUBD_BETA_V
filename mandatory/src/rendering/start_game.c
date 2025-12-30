@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:02:04 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:02:06 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/28 10:33:09 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int	main_function(t_game *gm)
+{
+	move_player(gm);
+	render_image(gm);
+	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
+	return (0);
+}
 
 int	start_game(t_game *gm)
 {
@@ -29,8 +37,8 @@ int	start_game(t_game *gm)
 	mlx_loop_hook(gm->mlx, main_function, gm);
 	mlx_hook(gm->win, 2, KeyPressMask, key_press, gm);
 	mlx_hook(gm->win, 3, KeyReleaseMask, key_release, gm);
+	mlx_hook(gm->win, 6, PointerMotionMask, mouse_move, gm);
 	mlx_hook(gm->win, 17, 0, close_win, gm);
-	mlx_hook(gm->win, MotionNotify, PointerMotionMask, mouse_move, gm);
 	mlx_loop(gm->mlx);
 	return (0);
 }
