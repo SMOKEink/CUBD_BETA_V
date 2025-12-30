@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:24 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:00:26 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/28 07:32:52 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	destroy_game(t_game *g, const char *msg)
+void	destroy_game(t_game *gm, const char *msg)
 {
 	if (msg)
 		fprintf(stderr, "%s\n", msg);
-	if (g->mlx && g->win)
-		mlx_mouse_show(g->mlx, g->win);
-	free_textures(g);
-	if (g->frame.img && g->mlx)
-		mlx_destroy_image(g->mlx, g->frame.img);
-	if (g->win && g->mlx)
-		mlx_destroy_window(g->mlx, g->win);
-	if (g->mlx)
+	if (gm->mlx && gm->win)
+		mlx_mouse_show(gm->mlx, gm->win);
+	// free_textures(gm);
+	if (gm->frame.img && gm->mlx)
+		mlx_destroy_image(gm->mlx, gm->frame.img);
+	if (gm->win && gm->mlx)
+		mlx_destroy_window(gm->mlx, gm->win);
+	if (gm->mlx)
 	{
-		mlx_destroy_display(g->mlx);
-		free(g->mlx);
+		mlx_destroy_display(gm->mlx);
+		free(gm->mlx);
 	}
 	gc_free_all();
 	exit(0);

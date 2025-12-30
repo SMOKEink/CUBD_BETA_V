@@ -6,13 +6,13 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:01:31 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 03:45:45 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/29 17:30:28 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-unsigned int	texel_at(t_tex *t, int x, int y)
+unsigned int	fetch_tex(t_tex *t, int x, int y)
 {
 	char	*px;
 
@@ -89,13 +89,13 @@ void	draw_slice(t_game *gm, t_slice *slice, t_tex *tex, t_ray *ray)
 		slice->line_end = HEIGHT - 1;
 	slice->tex_step = (double)tex->h / (double)slice->line_len;
 	real_start = HEIGHT / 2.0 - slice->line_len / 2.0;
-	slice->tex_pos = (slice->line_start - real_start) * slice->tex_step;
+	slice->tex_pos_y = (slice->line_start - real_start) * slice->tex_step;
 	y = slice->line_start - 1;
 	while (++y <= slice->line_end)
 	{
-		slice->tex_y = (int)slice->tex_pos;
-		color = texel_at(tex, slice->tex_x, slice->tex_y);
+		slice->tex_y = (int)slice->tex_pos_y;
+		color = fetch_tex(tex, slice->tex_x, slice->tex_y);
 		put_pixel(gm, slice->column, y, color);
-		slice->tex_pos += slice->tex_step;
+		slice->tex_pos_y += slice->tex_step;
 	}
 }

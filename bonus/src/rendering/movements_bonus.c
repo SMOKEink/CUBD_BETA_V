@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:53 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 20:59:54 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/28 09:18:51 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	move_forward(t_game *gm, t_player *p)
 		new_x = p->x + p->dir_x * SPRINT_SPEED;
 		new_y = p->y + p->dir_y * SPRINT_SPEED;
 	}
-	if (!collides_at(gm, new_x, p->y, COLLIDE))
+	if (!collides_at(gm, new_x, p->y, 0.2))
 		p->x = new_x;
-	if (!collides_at(gm, p->x, new_y, COLLIDE))
+	if (!collides_at(gm, p->x, new_y, 0.2))
 		p->y = new_y;
 	p->moving = true;
 }
@@ -49,9 +49,9 @@ static void	move_backward(t_game *gm, t_player *p)
 		new_x = p->x - p->dir_x * SPRINT_SPEED;
 		new_y = p->y - p->dir_y * SPRINT_SPEED;
 	}
-	if (!collides_at(gm, new_x, p->y, COLLIDE))
+	if (!collides_at(gm, new_x, p->y, 0.2))
 		p->x = new_x;
-	if (!collides_at(gm, p->x, new_y, COLLIDE))
+	if (!collides_at(gm, p->x, new_y, 0.2))
 		p->y = new_y;
 	p->moving = true;
 }
@@ -71,9 +71,9 @@ static void	move_right(t_game *gm, t_player *p)
 		new_x = p->x + p->dir_y * SPRINT_SPEED;
 		new_y = p->y - p->dir_x * SPRINT_SPEED;
 	}
-	if (!collides_at(gm, new_x, p->y, COLLIDE))
+	if (!collides_at(gm, new_x, p->y, 0.2))
 		p->x = new_x;
-	if (!collides_at(gm, p->x, new_y, COLLIDE))
+	if (!collides_at(gm, p->x, new_y, 0.2))
 		p->y = new_y;
 	p->moving = true;
 }
@@ -93,9 +93,9 @@ static void	move_left(t_game *gm, t_player *p)
 		new_x = p->x - p->dir_y * SPRINT_SPEED;
 		new_y = p->y + p->dir_x * SPRINT_SPEED;
 	}
-	if (!collides_at(gm, new_x, p->y, COLLIDE))
+	if (!collides_at(gm, new_x, p->y, 0.2))
 		p->x = new_x;
-	if (!collides_at(gm, p->x, new_y, COLLIDE))
+	if (!collides_at(gm, p->x, new_y, 0.2))
 		p->y = new_y;
 	p->moving = true;
 }

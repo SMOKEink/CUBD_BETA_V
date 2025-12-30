@@ -6,7 +6,7 @@
 /*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 20:59:32 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/25 03:44:23 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/28 10:30:55 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,3 @@ void	put_pixel(t_game *gm, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	close_win(t_game *g)
-{
-	destroy_game(g, NULL);
-	gc_free_all();
-	return (0);
-}
-
-int	main_function(t_game *gm)
-{
-	gm->player.moving = false;
-	move_player(gm);
-	render_image(gm);
-	draw_minimap(gm);
-	draw_hands(gm);
-	mlx_put_image_to_window(gm->mlx, gm->win, gm->frame.img, 0, 0);
-	return (0);
-}

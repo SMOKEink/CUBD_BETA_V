@@ -142,7 +142,7 @@ typedef struct s_slice
 	int					line_start;
 	int					line_end;
 	double				tex_step;
-	double				tex_pos;
+	double				tex_pos_y;
 	int					tex_x;
 	int					tex_y;
 	int					column;
@@ -211,7 +211,7 @@ int				start_game(t_game *gm);
 int				main_function(t_game *gm);
 int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
-unsigned int	texel_at(t_tex *t, int x, int y);
+unsigned int	fetch_tex(t_tex *t, int x, int y);
 void			destroy_game(t_game *g, const char *msg);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);

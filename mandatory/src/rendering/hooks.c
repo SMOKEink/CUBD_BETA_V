@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
+/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:01:36 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/24 21:01:38 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/28 10:32:45 by makevali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,12 @@ int	key_release(int keycode, t_game *gm)
 		gm->keys.rot_r = 0;
 	else if (keycode == XK_Shift_L)
 		gm->keys.sprint = 0;
+	return (0);
+}
+
+int	close_win(t_game *g)
+{
+	destroy_game(g, NULL);
+	gc_free_all();
 	return (0);
 }

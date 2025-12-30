@@ -28,7 +28,7 @@
 # include <unistd.h>
 
 # define WIDTH 1920
-# define HEIGHT 1008
+# define HEIGHT 1005
 
 # define MOVE_SPEED 0.04
 # define SPRINT_SPEED 0.2
@@ -160,7 +160,7 @@ typedef struct s_slice
 	int					line_start;
 	int					line_end;
 	double				tex_step;
-	double				tex_pos;
+	double				tex_pos_y;
 	int					tex_x;
 	int					tex_y;
 	int					column;
@@ -173,13 +173,11 @@ typedef struct s_slice
 # define COL_DOOR			0x00FF00
 # define COL_OPENED_DOOR	0x287828
 
-
 # define MMAP_X 90
 # define MMAP_Y 90
 # define MMAP_R 80
 # define MMAP_PIX_PER_CELL 8
 
-# define COLLIDE 0.2
 # define HAND_SCALE	1.2
 
 typedef struct s_game
@@ -251,8 +249,8 @@ int				main_function(t_game *gm);
 int				collides_at(t_game *gm, double x, double y, double r);
 int				load_textures(t_game *gm);
 void			draw_minimap(struct s_game *gm);
-unsigned int	texel_at(t_tex *t, int x, int y);
-void			destroy_game(t_game *g, const char *msg);
+unsigned int	fetch_tex(t_tex *t, int x, int y);
+void			destroy_game(t_game *gm, const char *msg);
 void			draw_hands(t_game *gm);
 t_tex			*choose_texture(t_game *gm, t_ray *ray);
 int				hit_position(t_game *gm, t_tex *tex, t_ray *ray);
