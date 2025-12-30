@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makevali <makevali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:01:42 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/28 10:39:07 by makevali         ###   ########.fr       */
+/*   Updated: 2025/12/30 19:20:12 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	load_tex(t_game *gm, int idx, const char *path)
 	t->img = mlx_xpm_file_to_image(gm->mlx, (char *)path, &t->w, &t->h);
 	if (!t->img)
 	{
-		printf("Texture load failed: %s\n", path);
-		destroy_game(gm, "Quitting...");
+		printf("Error\nTexture load failed: %s\n", path);
+		destroy_game(gm);
 		return (1);
 	}
 	t->data = mlx_get_data_addr(t->img, &t->bpp, &t->line_len, &t->endian);
 	if (!t->data)
 	{
-		printf("Data addr failed: %s\n", path);
-		destroy_game(gm, "Quitting...");
+		printf("Error\nData addr failed: %s\n", path);
+		destroy_game(gm);
 		return (1);
 	}
 	return (0);
