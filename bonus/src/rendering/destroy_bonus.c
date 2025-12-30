@@ -6,7 +6,7 @@
 /*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:24 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/30 19:19:36 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/30 19:41:40 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	free_map(char **map)
 
 void	destroy_game(t_game *gm)
 {
-	if (gm->mlx && gm->win)
-		mlx_mouse_show(gm->mlx, gm->win);
 	free_textures(gm);
 	if (gm->mlx && gm->frame.img)
 		mlx_destroy_image(gm->mlx, gm->frame.img);
