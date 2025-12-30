@@ -6,7 +6,7 @@
 /*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 18:09:38 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/30 18:52:12 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/30 19:45:18 by aachata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	key_press(int keycode, t_game *gm)
 		gm->keys.rot_l = 1;
 	else if (keycode == XK_Right)
 		gm->keys.rot_r = 1;
-	else if (keycode == XK_e)
-		toggle_door(gm);
 	else if (keycode == XK_Shift_L)
 		gm->keys.sprint = 1;
+	else if (keycode == XK_e)
+		toggle_door(gm);
 	return (0);
 }
 
