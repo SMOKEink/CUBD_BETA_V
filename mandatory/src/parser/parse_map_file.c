@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 17:19:52 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/23 19:07:37 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/30 20:35:05 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,29 @@ int	parse_map_file(char *file_name, t_parse_data *p_data)
 {
 	int	fd;
 
-	p_data->is_valid = 1;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-		return (printf("Error\nCan't open/inexistent map file\n"),
-			p_data->is_valid = 0, 0);
+		return (printf("Error\nCan't open/inexistent map file\n"), 0);
+	gc_set_fd(fd);
 	p_data->file_content = get_file_content(fd);
+	close(fd);
+	gc_set_fd(-1);
 	if (!p_data->file_content)
-		return (close(fd), 0);
+		return (printf("Error\nIncomplete map\n"), 0);
 	p_data->map_lines = interpret_file_content(p_data);
 	if (extract_data(p_data) == 0)
-		return (close(fd), 0);
+		return (0);
 	if (test_assets(p_data) == 0)
-		return (close(fd), 0);
+		return (0);
 	p_data->matrix = extract_map(p_data);
 	if (!p_data->matrix)
-		return (close(fd), printf("Error\nCan't extract map\n"), 0);
+		return (printf("Error\nCan't extract map\n"), 0);
 	if (check_enclosed(p_data) == 0)
-		return (close(fd), printf("Error\nMap is not enclosed in walls\n"), 0);
+		return (printf("Error\nMap is not enclosed in walls\n"), 0);
 	if (get_player_pos(p_data) == 0)
-		return (close(fd), printf("Error\nInvalid map chars\n"), 0);
+		return (printf("Error\nInvalid map chars\n"), 0);
 	fill_map_space(p_data);
-	return (close(fd), 1);
+	return (1);
 }
 
 char	**get_file_content(int fd)

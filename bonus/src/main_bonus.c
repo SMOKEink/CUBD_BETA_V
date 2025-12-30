@@ -6,7 +6,7 @@
 /*   By: yhajbi <yhajbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:28:41 by yhajbi            #+#    #+#             */
-/*   Updated: 2025/12/25 22:01:51 by yhajbi           ###   ########.fr       */
+/*   Updated: 2025/12/30 20:08:10 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 		return (printf("Error\nInvalid file extension\n"), 2);
 	ft_memset(&g, 0, sizeof(g));
 	ft_memset(&vars, 0, sizeof(vars));
-	if (parse_map_file(argv[1], &vars.p_data) == 0 || vars.p_data.is_valid == 0)
+	if (parse_map_file(argv[1], &vars.p_data) == 0)
 		return (gc_free_all(), 3);
 	merge_data(vars.p_data, &g);
 	g.filename = argv[1];

@@ -6,7 +6,7 @@
 /*   By: aachata <aachata@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 21:00:35 by aachata           #+#    #+#             */
-/*   Updated: 2025/12/30 19:30:28 by aachata          ###   ########.fr       */
+/*   Updated: 2025/12/30 20:30:59 by yhajbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,5 +305,7 @@ int				is_whitespace(char c);
 int				join_file_lines_helper(char *buffer, int *map_started,
 					int *map_gap);
 int				has_space_only(char *s);
+int				*get_gc_fd(void);
+void			gc_set_fd(int fd);
 
 #endif
